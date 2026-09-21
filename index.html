@@ -980,11 +980,17 @@
             window.setInterval(() => show(current + 1), 3200);
         }
 
-        card.addEventListener('click', event => {
-            if (event.target.closest('a')) return;
-            const link = card.querySelector('header.major a, .image');
-            if (link?.href) window.location.href = link.href;
-        });
+        card.addEventListener('click', function (event) {
+    // Don't interfere with buttons, links, or videos
+    if (event.target.closest('a, button, video')) return;
+
+    // Find the project's landing-page link
+    const link = card.querySelector('a[href]');
+
+    if (link) {
+        window.location.href = link.href;
+    }
+});
     }
 
     function fitCardText(card) {
@@ -995,10 +1001,12 @@
 
     /* Set up the five original cards first. */
     originals.forEach(card => {
-        setCover(card);
-        setupPreview(card);
-        fitCardText(card);
-    });
+    setCover(card);
+    setupPreview(card);
+    fitCardText(card);
+
+    card.style.cursor = 'pointer';
+});
 
     const getScrollStep = () => {
         const card = track.querySelector('article');
