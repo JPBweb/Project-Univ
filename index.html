@@ -290,6 +290,14 @@
             z-index: 1;
         }
 
+        /* Disable Forty's per-card color overlays; previews provide the visuals. */
+        #projects.tiles article::before,
+        #projects.tiles article::after {
+            display: none !important;
+            background: transparent !important;
+            opacity: 0 !important;
+        }
+
         /* Preview layer: the first project asset remains visible while idle. */
         #projects.tiles article .project-preview {
             position: absolute;
