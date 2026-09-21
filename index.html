@@ -1,0 +1,1060 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Jibril Paddil | Mechatronics Engineering Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="Jibril Paddil's Mechatronics Engineering portfolio featuring PLCs, automation, robotics, electro-pneumatics, Arduino, CAD, and 3D design." />
+    <link rel="stylesheet" href="html5up-forty/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="html5up-forty/assets/css/noscript.css" /></noscript>
+
+    <style>
+        /* Portfolio-specific additions while keeping the Forty template */
+        #banner {
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5.5rem 2rem 2rem;
+            box-sizing: border-box;
+        }
+
+        #banner .inner {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+            margin: 0 auto;
+            transform: translateY(1rem);
+        }
+
+        .profile-wrap {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin: 0 0 1rem;
+        }
+
+        /* White background circle sits behind the larger portrait without affecting layout. */
+        .profile-wrap::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 310px;
+            height: 310px;
+            transform: translateX(-50%);
+            border-radius: 50%; 
+            background: #fff;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .profile-photo {
+            position: relative;
+            z-index: 1;
+
+            width: 260px;
+            height: 300px;
+            flex: 0 0 300px;
+
+            border-radius: 0;
+
+            /* SHOW THE ENTIRE PHOTO */
+            object-fit: contain;
+            object-position: center;
+
+            border: 0;
+            padding: 0;
+
+            box-shadow: 0 1.5rem 4rem rgba(0,0,0,.28);
+            background: transparent;
+
+            animation: photo-in 1s ease both;
+        }
+        
+
+        .intro-text h1 {
+            margin-bottom: .6rem;
+        }
+
+        .intro-text {
+            max-width: 900px;
+            animation: rise-in .9s .2s ease both;
+        }
+
+                .intro-text p {
+            margin-bottom: 0;
+            max-width: 760px;
+        }
+
+        .intro-name {
+            font-size: clamp(2.25rem, 5vw, 4.5rem);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            font-weight: 700;
+            opacity: .9;
+            margin-bottom: .75rem !important;
+        }
+
+        .project-description {
+            margin-top: .4rem;
+        }
+
+        .project-tech {
+            font-size: .85rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            opacity: .75;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        #banner .actions {
+            justify-content: center;
+            animation: slide-in 1s .45s ease both;
+        }
+
+        #banner .actions .button {
+            margin-left: 0;
+        }
+
+        /* Hero project CTA */
+        #banner .project-cta {
+            margin-top: .5rem;
+            animation: rise-in .9s .45s ease both;
+        }
+
+        #banner .project-cta .button {
+            min-width: 190px;
+            text-align: center;
+        }
+
+        .profile-divider {
+            width: min(520px, 85%);
+            height: 2px;
+            margin: .25rem auto .75rem;
+            background: #fff;
+        }
+
+        .intro-text h1 {
+            font-size: clamp(2.25rem, 5vw, 4.25rem);
+            line-height: 1.05;
+        }
+
+        .intro-text p {
+            font-size: clamp(1.05rem, 2vw, 1.45rem);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .75rem;
+            margin-top: .5rem;
+        }
+
+        .hero-actions .button {
+            margin: 0;
+        }
+
+        .portfolio-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .55rem;
+            padding: .5rem;
+        }
+
+        .portfolio-nav a,
+        .hero-actions .button,
+        .projects-controls .button {
+            border: 1px solid rgba(255, 255, 255, .55);
+            border-radius: 999px;
+            box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .22);
+            font-weight: 700;
+            letter-spacing: .04em;
+            transition: background-color .25s ease, border-color .25s ease,
+                        box-shadow .25s ease, transform .25s ease;
+        }
+
+        .portfolio-nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.4rem;
+            padding: 0 .95rem;
+            font-size: .78rem;
+            text-transform: uppercase;
+        }
+
+        .portfolio-nav a:hover,
+        .hero-actions .button:hover,
+        .projects-controls .button:hover {
+            background: #fff;
+            border-color: #fff;
+            color: #111 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 .55rem 1.2rem rgba(0, 0, 0, .35);
+        }
+
+        #projects {
+            scroll-margin-top: 5rem;
+        }
+
+        /* =============================
+           PROJECT CAROUSEL / PREVIEWS
+           ============================= */
+        #projects.tiles {
+            position: relative;
+            display: block !important;
+            overflow: visible;
+            padding: 15rem 0 5rem;
+            width: 100%;
+        }
+
+        .projects-viewport {
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+        }
+
+        #projects.tiles .projects-track {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            width: max-content;
+            padding: 2rem;
+            will-change: transform;
+        }
+
+        .projects-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0 2rem 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .projects-heading h2 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            letter-spacing: .03em;
+        }
+
+        .projects-controls {
+            display: flex;
+            gap: .5rem;
+        }
+
+        .projects-controls .button {
+            margin: 0;
+            min-width: 3rem;
+            padding: 0 1rem;
+            cursor: pointer;
+        }
+
+        /* One uniform size for every project card. */
+        #projects.tiles article {
+            position: relative;
+            isolation: isolate;
+            flex: 0 0 345px;
+            width: 300px;
+            height: 480px;
+            min-height: 350px;
+            margin: 0 !important;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #181818 center / cover no-repeat;
+            transform: scale(1);
+            transform-origin: center center;
+            transition: transform .65s cubic-bezier(.2,.8,.2,1),
+                        box-shadow .65s ease,
+                        filter .5s ease;
+            will-change: transform;
+            z-index: 1;
+        }
+
+        #projects.tiles article::before,
+        #projects.tiles article::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        /* The card overlays are kept out of the way of the CP hero image.
+           Preview images are darkened independently so the hovered CP stays clear. */
+        #projects.tiles article::before,
+        #projects.tiles article::after {
+            display: none;
+        }
+
+        /* Preview layer: images and videos cycle while the card is idle. */
+        #projects.tiles article .project-preview {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            background: center / cover no-repeat;
+        }
+
+        #projects.tiles article .project-preview::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: linear-gradient(to bottom,
+                rgba(0,0,0,.16),
+                rgba(0,0,0,.50));
+            opacity: .78;
+            transition: opacity .85s ease, background .85s ease;
+        }
+
+        #projects.tiles article .project-preview img,
+        #projects.tiles article .project-preview video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transform: scale(1.02);
+            transition: opacity 1.6s ease-in-out, transform 1.6s ease;
+        }
+
+        #projects.tiles article .project-preview img.active,
+        #projects.tiles article .project-preview video.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* CP = cover photo. It is the hero image shown when a card is hovered. */
+        #projects.tiles article .cover-photo {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: opacity .3s ease, transform .55s cubic-bezier(.2,.8,.2,1);
+            pointer-events: none;
+        }
+
+        /* Transparent project render remains visible over the preview when idle. */
+        #projects.tiles article .image {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            overflow: hidden;
+            cursor: pointer;
+            background: transparent !important;
+            border: 0;
+            transition: opacity .35s ease, transform .45s ease;
+        }
+
+        #projects.tiles article .image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: transparent;
+            transition: transform .5s cubic-bezier(.2,.75,.25,1), opacity .35s ease;
+        }
+
+        /* Project information rises from the bottom to approximately half the card. */
+        #projects.tiles article header.major {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 48%;
+            min-height: 0;
+            box-sizing: border-box;
+            padding: 1.05rem 1.1rem;
+            margin: 0;
+            z-index: 7;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(to top, rgba(7,7,7,.97), rgba(7,7,7,.74), transparent);
+            transform: translateY(105%);
+            opacity: 0;
+            transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
+            pointer-events: none;
+        }
+
+        #projects.tiles article header.major h3 {
+            margin: 0 0 .45rem;
+            font-size: clamp(1.15rem, 2vw, 1.55rem);
+            line-height: 1.18;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        #projects.tiles article header.major p {
+            margin: 0;
+            font-size: .72rem;
+            line-height: 1.35;
+            opacity: .9;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        #projects.tiles article header.major h3 a,
+        #projects.tiles article header.major p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        #projects.tiles article header.major h3 a {
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+        }
+
+        #projects.tiles article header.major p {
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+        }
+
+        #projects.tiles article header.major a { color: #fff; }
+
+        /* Hover: enlarge card, reveal CP, and slide the description upward. */
+        #projects.tiles article:hover,
+        #projects.tiles article.is-hovered {
+            transform: scale(1.16);
+            z-index: 50;
+            box-shadow: 0 1.5rem 3rem rgba(0,0,0,.48);
+        }
+
+        #projects.tiles article:hover .cover-photo,
+        #projects.tiles article.is-hovered .cover-photo {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
+        #projects.tiles article:hover .image,
+        #projects.tiles article.is-hovered .image {
+            opacity: 0;
+            transform: scale(1.03);
+        }
+
+        #projects.tiles article:hover header.major,
+        #projects.tiles article.is-hovered header.major {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #projects.tiles article:hover .project-preview::after,
+        #projects.tiles article.is-hovered .project-preview::after {
+            opacity: 1;
+            background: linear-gradient(to bottom,
+                rgba(0,0,0,.68),
+                rgba(0,0,0,.92));
+        }
+
+        /* Stop the row while the user is interacting with a card. */
+        @media screen and (max-width: 980px) {
+            #projects.tiles .projects-track { padding: 1.5rem; }
+        }
+
+        @media screen and (max-width: 736px) {
+            #projects.tiles {
+                padding: 2.5rem 0 4rem;
+            }
+
+            #projects.tiles .projects-track {
+                gap: 1rem;
+                padding: 1.5rem 1.25rem;
+            }
+
+            #projects.tiles article {
+                flex-basis: 235px;
+                width: 235px;
+                height: 345px;
+                min-height: 345px;
+            }
+
+            #projects.tiles article:hover,
+            #projects.tiles article.is-hovered {
+                transform: scale(1.08);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #projects.tiles article,
+            #projects.tiles article .image,
+            #projects.tiles article .image img,
+            #projects.tiles article .cover-photo,
+            #projects.tiles article header.major,
+            #projects.tiles article .project-preview img,
+            #projects.tiles article .project-preview video {
+                transition: none;
+            }
+        }
+
+        /* Horizontal scrolling is intentional: the cards remain one row. */
+        @media screen and (max-width: 980px) {
+            .projects-viewport {
+                scroll-snap-type: x proximity;
+            }
+
+            #projects.tiles article {
+                scroll-snap-align: center;
+            }
+        }
+
+        @media screen and (max-width: 736px) {
+            #projects.tiles {
+                padding: 2rem 1.25rem 3rem;
+            }
+
+            #projects.tiles article {
+                flex-basis: 235px;
+                width: 235px;
+                height: 345px;
+                min-height: 345px;
+            }
+
+            #projects.tiles article:hover,
+            #projects.tiles article.is-previewing {
+                transform: scale(1.06);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #projects.tiles article,
+            #projects.tiles article .image,
+            #projects.tiles article .image img,
+            #projects.tiles article header.major,
+            #projects.tiles article .project-preview {
+                transition: none;
+            }
+        }
+
+        @keyframes photo-in {
+            from { opacity: 0; transform: scale(.82); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes rise-in {
+            from { opacity: 0; transform: translateY(34px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slide-in {
+            from { opacity: 0; transform: translateX(-42px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .profile-photo,
+            .intro-text,
+            #banner .actions {
+                animation: none;
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .skill-list {
+            margin: 0;
+        }
+
+        .skill-list li {
+            margin-bottom: .45rem;
+        }
+
+        @media screen and (max-width: 736px) {
+            #banner {
+                min-height: 100svh;
+                padding: 4.5rem 1.25rem 1.5rem;
+            }
+
+            .profile-wrap {
+                margin: 1rem 0 .75rem;
+            }
+
+            .profile-wrap::before {
+                top: 0;
+                width: 235px;
+                height: 235px;
+                transform: translateX(-50%);
+            }
+
+            .profile-photo {
+                width: 220px;
+                height: 260px;
+                object-fit: contain;
+                object-position: center;
+            }
+            .profile-divider {
+                width: 85%;
+            }
+
+            .projects-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 0 1.25rem .5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="is-preload">
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <header id="header" class="alt">
+        <nav class="portfolio-nav" aria-label="Main navigation">
+            <a href="#banner">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About Me</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="banner" class="major">
+        <div class="inner">
+            <div class="profile-wrap">
+                <!-- Put your photo at images/jibril.jpg -->
+                <img class="profile-photo"
+                     src="html5up-forty/images/profile-photo.png"
+                     alt="Jibril Paddil">
+                <div class="profile-divider"></div>
+
+                <div class="intro-text">
+                    <header class="major">
+                        <h1>Hi, I'm Jibril Paddil.</h1>
+                    </header>
+                    <div class="content">
+                        <p>
+                            Mechatronics Engineer · TESDA Certified ·  CAD & 3D Designer
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="button next scrolly">View My Projects</a>
+                    <a href="certificates.html" class="button">View My Certificates</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <div id="main">
+
+        <section id="projects" class="tiles" aria-label="Projects">
+            <div class="projects-heading">
+                <h2>Projects</h2>
+                <div class="projects-controls" aria-label="Project navigation">
+                    <button type="button" class="button" id="projects-prev" aria-label="Previous projects">&#8592;</button>
+                    <button type="button" class="button" id="projects-next" aria-label="Next projects">&#8594;</button>
+                </div>
+            </div>
+            <div class="projects-viewport">
+                <div class="projects-track">
+                <article data-cover="sumubot-cp.png" data-previews="sumubot2.png|sumubot3.png|sumubot4.png|sumubot5.png|sumubot6.png|sumubot7.png|sumubot8.png|sumubot9.png|sumubot10.png|sumubot11.png">
+                    <div class="project-preview" aria-hidden="true"></div>
+                    <img class="cover-photo" src="html5up-forty/images/sumubot-cp.png" alt="" aria-hidden="true">
+                    <a href="html5up-forty/landing.html?project=sumobot" class="image" aria-label="Open DarkKnight-inspired autonomous sumobot project">
+                    </a>
+                    <header class="major">
+                        <h3><a href="html5up-forty/landing.html?project=sumobot" class="link">DarkKnight-Inspired Autonomous Sumobot</a></h3>
+                        <p>Blender · ESP32 · Ultrasonic Sensors · 3D Printing</p>
+                    </header>
+                </article>
+
+                <article data-cover="jeepney-cp.png" data-previews="jeepney2.png|jeepney3.png|jeepney4.png|jeepney5.png|jeepney6.png|jeepney7.png|jeepney8.png|jeepney9.png|jeepney10.png|jeepneyvid.mp4">
+                    <div class="project-preview" aria-hidden="true"></div>
+                    <img class="cover-photo" src="html5up-forty/images/jeepney-cp.png" alt="" aria-hidden="true">
+                    <a href="html5up-forty/landing.html?project=jeepney" class="image" aria-label="Open GPS-based jeepney arrival time prediction system project">
+
+                    </a>
+                    <header class="major">
+                        <h3><a href="html5up-forty/landing.html?project=jeepney" class="link">GPS-Based Jeepney Arrival Time Prediction System</a></h3>
+                        <p>Thesis Project · GPS · Arduino · 3D-Printed Enclosure</p>
+                    </header>
+                </article>
+
+                <article data-cover="rivet-process-cp.png" data-previews="rivet-process2.png|rivet-process3.png|rivet-process4.png|rivet-process5.png|rivet-process6.png|rivet-process7.png|rivet-processvid.mp4">
+                    <div class="project-preview" aria-hidden="true"></div>
+                    <img class="cover-photo" src="html5up-forty/images/rivet-process-cp.png" alt="" aria-hidden="true">
+                    <a href="html5up-forty/landing.html?project=rivet" class="image" aria-label="Open automated rivet manufacturing process project">
+                    </a>
+                    <header class="major">
+                        <h3><a href="html5up-forty/landing.html?project=rivet" class="link">Automated Rivet Manufacturing Process</a></h3>
+                        <p>3D Animation · Raw Material Handling · Manufacturing Process</p>
+                    </header>
+                </article>
+
+                <article data-cover="smart-building-cp.png" data-previews="smart-building.bg.jfif|smart-building2.png|smart-building3.png|smart-building4.png|smart-building5.png|smart-buildingvid.mp4">
+                    <div class="project-preview" aria-hidden="true"></div>
+                    <img class="cover-photo" src="html5up-forty/images/smart-building-cp.png" alt="" aria-hidden="true">
+                    <a href="html5up-forty/landing.html?project=smart-building" class="image" aria-label="Open smart building automation system project">
+                    </a>
+                    <header class="major">
+                        <h3><a href="html5up-forty/landing.html?project=smart-building" class="link">Smart Building Automation System</a></h3>
+                        <p>Group Project · Six Sensors · Monitoring · Automation</p>
+                    </header>
+                </article>
+
+                <article data-cover="smart-house-cp.png" data-previews="smart-house2.png|smart-house3.png|smart-house4.png|smart-house5.png|smart-house6.png|smart-house8.png|smart-house9.jfif|smart-house10.jfif|smart-house11.jfif|smart-house12.jfif|smart-house13.jfif|smart-house16.png|smart-house17.png|smart-house18.png|smart-housevid.mp4|smart-housevid2.mp4|smart-housevid3.mp4|smart-housevid4.mp4">
+                    <div class="project-preview" aria-hidden="true"></div>
+                    <img class="cover-photo" src="html5up-forty/images/smart-house-cp.png" alt="" aria-hidden="true">
+                    <a href="html5up-forty/landing.html?project=smart-house" class="image" aria-label="Open 3D printed smart house project">
+                    </a>
+                    <header class="major">
+                        <h3><a href="html5up-forty/landing.html?project=smart-house" class="link">3D Printed Smart House</a></h3>
+                        <p>Group Project · Blender · 3D Printing · Home Automation</p>
+                    </header>
+                </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="inner">
+                <header class="major">
+                    <h2>About Me</h2>
+                </header>
+
+                <div class="about-grid">
+                    <div>
+                        <p>
+                            I graduated with a Bachelor of Mechatronics Engineering from
+                            Saint Louis University. My engineering work combines programming,
+                            electronics, mechanical systems, automation, and creative design.
+                        </p>
+                        <p>
+                            I also hold a TESDA National Certificate II in Mechatronics Servicing.
+                            My goal is to keep learning by building, testing, troubleshooting,
+                            and improving real systems.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3>Technical Focus</h3>
+                        <ul class="skill-list">
+                            <li>PLC Programming & Ladder Logic</li>
+                            <li>Rapid Prototyping</li>
+                            <li>3D Design & Printing</li>
+                            <li>Industrial Automation & Control</li>
+                            <li>Electro-Pneumatics</li>
+                            <li>Arduino & Embedded Systems</li>
+                            <li>Sensors, Motors & Actuators</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="inner">
+            <section>
+                <header class="major">
+                    <h2>Let's Connect</h2>
+                </header>
+                <p>
+                    Interested in my projects or looking to connect about engineering,
+                    automation, or technical opportunities? Feel free to reach out.
+                </p>
+                <ul class="actions">
+                    <li>
+                        <a href="mailto:jibrilpaddil@gmail.com" class="button primary">
+                            Email Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/jibril-paddil-b4381a3a6/" target="_blank" rel="noopener" class="button">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://pin.it/395HIx8EL" target="_blank" rel="noopener" class="button">
+                            Pinterest
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <ul class="icons">
+                <li>
+                    <a href="mailto:jibrilpaddil@gmail.com" class="icon solid alt fa-envelope">
+                        <span class="label">Email</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/jibril-paddil-b4381a3a6/" target="_blank" rel="noopener"
+                       class="icon brands alt fa-linkedin-in">
+                        <span class="label">LinkedIn</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://pin.it/395HIx8EL" target="_blank" rel="noopener"
+                       class="icon brands alt fa-pinterest-p">
+                        <span class="label">Pinterest</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="copyright">
+                <li>&copy; 2026 Jibril Paddil</li>
+                <li>Based on <a href="https://html5up.net/forty">Forty by HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<script src="html5up-forty/assets/js/jquery.min.js"></script>
+<script src="html5up-forty/assets/js/jquery.scrolly.min.js"></script>
+<script src="html5up-forty/assets/js/jquery.scrollex.min.js"></script>
+<script src="html5up-forty/assets/js/browser.min.js"></script>
+<script src="html5up-forty/assets/js/breakpoints.min.js"></script>
+<script src="html5up-forty/assets/js/util.js"></script>
+<script src="html5up-forty/assets/js/main.js"></script>
+
+<script>
+(function () {
+    const projects = document.querySelector('#projects.tiles');
+    if (!projects) return;
+
+    const track = projects.querySelector('.projects-track');
+    if (!track) return;
+
+    const viewport = projects.querySelector('.projects-viewport');
+    if (!viewport) return;
+
+    const originals = Array.from(track.querySelectorAll('article'));
+    if (!originals.length) return;
+
+    const previousButton = document.querySelector('#projects-prev');
+    const nextButton = document.querySelector('#projects-next');
+
+    const imageExt = /\.(png|jpe?g|jfif|webp|gif|avif)$/i;
+    const videoExt = /\.(mp4|webm|ogg)$/i;
+    const base = 'html5up-forty/images/';
+
+    function isAsset(name) {
+        return imageExt.test(name) || videoExt.test(name);
+    }
+
+    function makeUrl(name) {
+        return base + name.trim();
+    }
+
+    function setCover(card) {
+        const cover = card.querySelector('.cover-photo');
+        if (!cover) return;
+
+        const coverName = (card.dataset.cover || '').trim();
+        if (coverName) cover.src = makeUrl(coverName);
+
+        /* If the CP file is unavailable, fall back to the existing project background. */
+        cover.addEventListener('error', () => {
+            const fallback = (card.dataset.previews || '').split('|').find(name => imageExt.test(name.trim()));
+            if (fallback && cover.dataset.fallback !== fallback) {
+                cover.dataset.fallback = fallback;
+                cover.src = makeUrl(fallback);
+            }
+        }, { once: true });
+    }
+
+    function setupPreview(card) {
+        const layer = card.querySelector('.project-preview');
+        if (!layer) return;
+
+        /* Clear cloned preview elements so each card gets exactly one preview sequence. */
+        layer.innerHTML = '';
+
+        const names = (card.dataset.previews || '')
+            .split('|')
+            .map(name => name.trim())
+            .filter(Boolean)
+            .filter(isAsset);
+
+        if (!names.length) return;
+
+        const items = [];
+
+        names.forEach(name => {
+            let item;
+
+            if (videoExt.test(name)) {
+                item = document.createElement('video');
+                item.muted = true;
+                item.playsInline = true;
+                item.preload = 'none';
+                item.dataset.src = makeUrl(name);
+                item.setAttribute('aria-hidden', 'true');
+            } else {
+                item = document.createElement('img');
+                item.alt = '';
+                item.setAttribute('aria-hidden', 'true');
+            }
+
+            item.src = makeUrl(name);
+            item.addEventListener('error', () => {
+                item.remove();
+                const index = items.indexOf(item);
+                if (index !== -1) items.splice(index, 1);
+            });
+
+            layer.appendChild(item);
+            items.push(item);
+        });
+
+        if (!items.length) return;
+
+        let current = 0;
+        let timer = null;
+        let hovering = false;
+
+        function show(index) {
+            if (!items.length) return;
+            current = ((index % items.length) + items.length) % items.length;
+
+            items.forEach((item, i) => {
+                item.classList.toggle('active', i === current);
+                if (item.tagName === 'VIDEO') {
+                    if (i === current) {
+                        if (!item.src) {
+                            item.src = item.dataset.src;
+                            item.load();
+                        }
+                        item.currentTime = 0;
+                        item.play().catch(() => {});
+                    } else {
+                        item.pause();
+                    }
+                }
+            });
+        }
+
+        function startCycle() {
+            if (timer || items.length < 2) return;
+            timer = setInterval(() => {
+                if (!hovering) show(current + 1);
+            }, 2500);
+        }
+
+        function stopCycle() {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        show(0);
+        startCycle();
+
+        card.addEventListener('mouseenter', () => {
+            hovering = true;
+            stopCycle();
+            card.classList.add('is-hovered');
+        });
+
+        card.addEventListener('mouseleave', () => {
+            hovering = false;
+            card.classList.remove('is-hovered');
+            startCycle();
+        });
+    }
+
+    /* Set up the five original cards first. */
+    originals.forEach(card => {
+        setCover(card);
+        setupPreview(card);
+    });
+
+    /* Duplicate the complete card set for a seamless left-to-right loop. */
+    originals.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.remove('is-hovered');
+        track.appendChild(clone);
+        setCover(clone);
+        setupPreview(clone);
+    });
+
+    const getLoopWidth = () => track.scrollWidth / 2;
+    const moveProjects = direction => {
+        if (direction < 0 && viewport.scrollLeft <= 5) {
+            viewport.scrollLeft = getLoopWidth();
+        }
+        viewport.scrollBy({ left: direction * 360, behavior: 'smooth' });
+    };
+
+    previousButton?.addEventListener('click', () => moveProjects(-1));
+    nextButton?.addEventListener('click', () => moveProjects(1));
+
+    let lastFrame = 0;
+    let paused = false;
+
+    function loop(timestamp) {
+        if (!lastFrame) lastFrame = timestamp;
+        const elapsed = timestamp - lastFrame;
+        if (!paused && elapsed > 16) {
+            viewport.scrollLeft += .35;
+            const loopWidth = getLoopWidth();
+            if (loopWidth && viewport.scrollLeft >= loopWidth) {
+                viewport.scrollLeft -= loopWidth;
+            }
+            lastFrame = timestamp;
+        }
+        requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        paused = true;
+    }
+})();
+</script>
+
+
+
+</body>
+</html>

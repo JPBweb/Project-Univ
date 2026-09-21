@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>Project | Jibril Paddil</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        :root { --panel: rgba(255,255,255,.055); --line: rgba(255,255,255,.12); }
+        body { background:#0d0d0d; }
+        .project-page { padding: 7rem 2rem 4rem; }
+        .project-page .inner { max-width: 1150px; margin:0 auto; }
+        .project-top { margin-bottom: 2.5rem; }
+        .back-link { margin-bottom: 1.25rem; }
+        .project-kicker { text-transform:uppercase; letter-spacing:.12em; font-size:.72rem; opacity:.65; margin-bottom:.5rem; }
+        #project-title { margin-bottom:.5rem; }
+        #project-tech { opacity:.72; margin:0; }
+        .project-description-box {
+            margin: 2rem 0 3rem; padding: 1.5rem;
+            background:var(--panel); border:1px solid var(--line); border-radius:8px;
+        }
+        .project-description-box h2 { font-size:1rem; margin-bottom:.75rem; }
+        #project-description { margin:0; line-height:1.75; }
+        .media-grid {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+        .media-item {
+            break-inside: avoid;
+            margin:0 0 1rem;
+            overflow:hidden; border-radius:8px; background:#171717;
+            border:1px solid var(--line);
+        }
+        .media-item img, .media-item video {
+            display:block; width:100%; height:auto; max-height:520px; object-fit:cover;
+        }
+        .media-item video { background:#080808; }
+        .media-item figcaption { padding:.7rem .9rem; font-size:.72rem; opacity:.65; }
+        .project-footer { margin-top:3rem; }
+        @media screen and (max-width:736px) {
+            .project-page { padding:6rem 1.25rem 3rem; }
+            .media-grid { column-count:2; }
+        }
+        @media screen and (max-width:560px) {
+            .media-grid { column-count:1; }
+        }
+        @media (prefers-reduced-motion: reduce) { * { scroll-behavior:auto !important; } }
+    </style>
+</head>
+<body class="is-preload">
+<div id="wrapper">
+    <section class="project-page">
+        <div class="inner">
+            <div class="project-top">
+                <a href="../index_portfolio_polished.html#projects" class="button small back-link">Back to Projects</a>
+                <p id="project-kicker" class="project-kicker"></p>
+                <h1 id="project-title">Project</h1>
+                <p id="project-tech"></p>
+            </div>
+
+            <section class="project-description-box">
+                <h2>Project Description</h2>
+                <!-- EDIT THIS CONTENT IN THE PROJECTS OBJECT BELOW. -->
+                <p id="project-description"></p>
+            </section>
+
+            <header class="major">
+                <h2>Project Gallery</h2>
+            </header>
+            <div id="media-grid" class="media-grid" aria-label="Project images and videos"></div>
+
+            <div class="project-footer">
+                <a href="../index_portfolio_polished.html#projects" class="button next">Back to All Projects</a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+(function () {
+    const base = 'images/';
+    const imageExt = /\.(png|jpe?g|jfif|webp|gif|avif)$/i;
+    const videoExt = /\.(mp4|webm|ogg)$/i;
+
+    /*
+     * EDIT YOUR PROJECT DESCRIPTIONS HERE.
+     * You can also add/remove images and videos from each media array.
+     */
+    const projects = {
+        sumobot: {
+            title: 'DarkKnight-Inspired Autonomous Sumobot',
+            kicker: 'Autonomous Robotics',
+            tech: 'Blender · ESP32 · Ultrasonic Sensors · 3D Printing',
+            description: 'An autonomous sumobot designed in Blender and built around an ESP32. The project combines ultrasonic sensing, programmed decision-making, and a 3D-printed body designed for stability and controlled movement.',
+            media: ['sumubot2.png','sumubot3.png','sumubot4.png','sumubot5.png','sumubot6.png','sumubot7.png','sumubot8.png','sumubot9.png','sumubot10.png','sumubot11.png']
+        },
+        jeepney: {
+            title: 'GPS-Based Jeepney Arrival Time Prediction System',
+            kicker: 'Thesis Project',
+            tech: 'GPS · Arduino · 3D-Printed Enclosure',
+            description: 'A GPS-based prototype that helps estimate jeepney arrival times. The project combines location tracking, Arduino hardware, data handling, and a 3D-printed enclosure designed for practical transport use.',
+            media: ['jeepney2.png','jeepney3.png','jeepney4.png','jeepney5.png','jeepney6.png','jeepney7.png','jeepney8.png','jeepney9.png','jeepney10.png','jeepneyvid.mp4']
+        },
+        rivet: {
+            title: 'Automated Rivet Manufacturing Process',
+            kicker: 'Manufacturing Automation',
+            tech: '3D Animation · Raw Material Handling · Manufacturing Process',
+            description: 'A visualized automated manufacturing line for rivet production. It presents the movement of raw material through handling, forming, assembly, and inspection stages as one coordinated process.',
+            media: ['rivet-process2.png','rivet-process3.png','rivet-process4.png','rivet-process5.png','rivet-process6.png','rivet-process7.png','rivet-processvid.mp4']
+        },
+        'smart-building': {
+            title: 'Smart Building Automation System',
+            kicker: 'Automation & Monitoring',
+            tech: 'Group Project · Sensors · Monitoring · Automation',
+            description: 'A group automation project that uses multiple sensors to monitor building conditions and trigger control actions. The system demonstrates how sensing, logic, and monitoring can improve building operation.',
+            media: ['smart-building.bg.jfif','smart-building2.png','smart-building3.png','smart-building4.png','smart-building5.png','smart-buildingvid.mp4']
+        },
+        'smart-house': {
+            title: '3D Printed Smart House',
+            kicker: '3D Design & Home Automation',
+            tech: 'Group Project · Blender · 3D Printing · Home Automation',
+            description: 'A 3D-printed smart house model combining Blender design with home-automation ideas. It demonstrates how a physical model can bring together layout planning, electronics, sensing, and automated control.',
+            media: ['smart-house2.png','smart-house3.png','smart-house4.png','smart-house5.png','smart-house6.png','smart-house8.png','smart-house9.jfif','smart-house10.jfif','smart-house11.jfif','smart-house12.jfif','smart-house13.jfif','smart-house16.png','smart-house17.png','smart-house18.png','smart-housevid.mp4','smart-housevid2.mp4','smart-housevid3.mp4','smart-housevid4.mp4']
+        }
+    };
+
+    const key = new URLSearchParams(location.search).get('project') || 'sumobot';
+    const project = projects[key] || projects.sumobot;
+
+    document.title = project.title + ' | Jibril Paddil';
+    document.getElementById('project-kicker').textContent = project.kicker;
+    document.getElementById('project-title').textContent = project.title;
+    document.getElementById('project-tech').textContent = project.tech;
+    document.getElementById('project-description').textContent = project.description;
+
+    const grid = document.getElementById('media-grid');
+
+    const videoObserver = 'IntersectionObserver' in window
+        ? new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                const video = entry.target;
+                if (!video.src) {
+                    video.src = video.dataset.src;
+                    video.load();
+                }
+                observer.unobserve(video);
+            });
+        }, { rootMargin: '300px 0px' })
+        : null;
+
+    project.media.forEach(function (name) {
+        const figure = document.createElement('figure');
+        figure.className = 'media-item';
+
+        if (videoExt.test(name)) {
+            const video = document.createElement('video');
+            video.dataset.src = base + name;
+            video.controls = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.preload = 'none';
+            video.setAttribute('aria-label', project.title + ' project video');
+            video.poster = base + project.media.find(function (asset) {
+                return imageExt.test(asset);
+            });
+            figure.appendChild(video);
+            if (videoObserver) videoObserver.observe(video);
+            else video.src = video.dataset.src;
+        } else if (imageExt.test(name)) {
+            const img = document.createElement('img');
+            img.src = base + name;
+            img.alt = project.title + ' project image';
+            img.loading = 'lazy';
+            figure.appendChild(img);
+        } else {
+            return;
+        }
+
+        const caption = document.createElement('figcaption');
+        caption.textContent = name;
+        figure.appendChild(caption);
+        grid.appendChild(figure);
+    });
+})();
+</script>
+</body>
+</html>
