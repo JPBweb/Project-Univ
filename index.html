@@ -376,7 +376,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            height: 68%;
+            height: 48%;
             min-height: 0;
             box-sizing: border-box;
             padding: 1.05rem 1.1rem;
@@ -384,9 +384,9 @@
             z-index: 8;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: flex-end;
             gap: .45rem;
-            overflow-y: auto;
+            overflow: visible;
             background: linear-gradient(to top, rgba(7,7,7,.97), rgba(7,7,7,.74), transparent);
             transform: translateY(105%);
             opacity: 0;
@@ -417,6 +417,11 @@
         }
 
         #projects.tiles article header.major a { color: #fff; }
+
+        #projects.tiles article.has-long-content header.major {
+            height: 68%;
+            justify-content: flex-start;
+        }
 
         /* Hover: enlarge card, reveal CP, and slide the description upward. */
         #projects.tiles article:hover,
@@ -982,10 +987,17 @@
         });
     }
 
+    function fitCardText(card) {
+        const header = card.querySelector('header.major');
+        if (!header) return;
+        card.classList.toggle('has-long-content', header.scrollHeight > header.clientHeight);
+    }
+
     /* Set up the five original cards first. */
     originals.forEach(card => {
         setCover(card);
         setupPreview(card);
+        fitCardText(card);
     });
 
     const getScrollStep = () => {
@@ -1010,7 +1022,10 @@
     previousButton?.addEventListener('click', () => moveProjects(-1));
     nextButton?.addEventListener('click', () => moveProjects(1));
     viewport.addEventListener('scroll', updateControls, { passive: true });
-    window.addEventListener('resize', updateControls);
+    window.addEventListener('resize', () => {
+        updateControls();
+        originals.forEach(fitCardText);
+    });
     updateControls();
 
     let dragging = false;
