@@ -8,7 +8,16 @@
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
         :root { --panel: rgba(255,255,255,.055); --line: rgba(255,255,255,.12); }
-        body { background:#0d0d0d; }
+        body {
+            background: #20252a url("images/front-photo-background (2).jpg") center / cover fixed no-repeat;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: rgba(13, 13, 13, .2);
+        }
         .project-page { padding: 7rem 2rem 4rem; }
         .project-page .inner { max-width: 1150px; margin:0 auto; }
         .project-top { margin-bottom: 2.5rem; }
