@@ -31,8 +31,15 @@
         .certificate-card img,
         .certificate-card object { display:block; width:100%; border-radius:4px; background:#fff; }
         .certificate-card img { height:auto; max-height:420px; object-fit:contain; }
-        .certificate-card object { height:360px; }
         .certificate-card .button { margin:0; }
+        .certificate-card img { cursor:zoom-in; }
+        .image-viewer {
+            position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+            padding:2rem; background:rgba(0,0,0,.86); cursor:zoom-out;
+        }
+        .image-viewer[hidden] { display:none; }
+        .image-viewer img { max-width:min(94vw, 1400px); max-height:92vh; width:auto; height:auto; object-fit:contain; cursor:default; }
+        .image-viewer button { position:absolute; top:1rem; right:1rem; cursor:pointer; }
         @media screen and (max-width:900px) { .certificate-grid { column-count:2; } }
         @media screen and (max-width:560px) {
             .certificates-page { padding:6rem 1.25rem 3rem; }
@@ -44,7 +51,7 @@
 <div id="wrapper">
     <section class="certificates-page">
         <div class="inner">
-            <a href="index.html#projects" class="button small next">Back to Projects</a>
+            <a href="index%281%29.html#projects" class="button small next">Back to Projects</a>
             <header class="major">
                 <h1>Certificates & Training</h1>
             </header>
@@ -53,10 +60,14 @@
             </div>
             <div id="certificate-grid" class="certificate-grid" aria-label="Certificates and training records"></div>
             <ul class="actions">
-                <li><a href="index.html#banner" class="button next">Back to Home</a></li>
+                <li><a href="index%281%29.html#banner" class="button next">Back to Home</a></li>
             </ul>
         </div>
     </section>
+</div>
+<div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="Expanded certificate image">
+    <button type="button" class="button small" id="image-viewer-close" aria-label="Close expanded image">Close</button>
+    <img id="image-viewer-image" alt="">
 </div>
 <script src="html5up-forty/assets/js/jquery.min.js"></script>
 <script src="html5up-forty/assets/js/jquery.scrolly.min.js"></script>
@@ -73,24 +84,9 @@
         '26-03-104_Jibril Paddil.jpg',
         '26-03-150_Jibril_Paddil.JPG',
         '6.png',
-        'Developing Awareness on Circular Economy.pdf',
-        'english as medium of instruction.pdf',
-        'English for Business and Entrepreneurship.pdf',
-        'English for Science, Technology, Engineering, and.pdf',
-        'english for tourism professionals.pdf',
-        'Exercising Sustainable Development in the.pdf',
-        'Microsoft Digital Literacy.pdf',
-        'NCII.pdf',
-        'Orienting Oneself To Environmentally Sustainable.pdf',
         'PADDIL, JIBRIL B. CERT.png',
         'PADDIL, JIBRIL.png',
-        'Participating in Workplace Communicatio.pdf',
-        'Performing Solid Waste Management in the.pdf',
-        'Practicing Data Privacy in the Workplac.pdf',
-        'Receiving and Responding to Workplace.pdf',
-        'Session 1 introduction to robots and robotics.jpg',
-        'Using Educational Technology in the English.pdf',
-        'Working in a Gender-Diverse Environmen.pdf'
+        'Session 1 introduction to robots and robotics.jpg'
     ];
 
     const grid = document.getElementById('certificate-grid');
@@ -109,12 +105,6 @@
             image.alt = title.textContent;
             image.loading = 'lazy';
             card.appendChild(image);
-        } else {
-            const preview = document.createElement('object');
-            preview.data = path;
-            preview.type = 'application/pdf';
-            preview.setAttribute('aria-label', title.textContent + ' PDF preview');
-            card.appendChild(preview);
         }
 
         const link = document.createElement('a');
@@ -125,6 +115,28 @@
         link.textContent = 'Open Certificate';
         card.appendChild(link);
         grid.appendChild(card);
+    });
+
+    const viewer = document.getElementById('image-viewer');
+    const viewerImage = document.getElementById('image-viewer-image');
+    const closeViewer = function () {
+        viewer.hidden = true;
+        viewerImage.removeAttribute('src');
+    };
+
+    grid.addEventListener('click', function (event) {
+        const image = event.target.closest('img');
+        if (!image) return;
+        viewerImage.src = image.src;
+        viewerImage.alt = image.alt;
+        viewer.hidden = false;
+    });
+    document.getElementById('image-viewer-close').addEventListener('click', closeViewer);
+    viewer.addEventListener('click', function (event) {
+        if (event.target === viewer) closeViewer();
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeViewer();
     });
 })();
 </script>

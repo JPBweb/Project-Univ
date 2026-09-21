@@ -44,9 +44,16 @@
         .media-item img, .media-item video {
             display:block; width:100%; height:auto; max-height:520px; object-fit:cover;
         }
+        .media-item img { cursor: zoom-in; }
         .media-item video { background:#080808; }
-        .media-item figcaption { padding:.7rem .9rem; font-size:.72rem; opacity:.65; }
         .project-footer { margin-top:3rem; }
+        .image-viewer {
+            position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
+            padding:2rem; background:rgba(0,0,0,.86); cursor:zoom-out;
+        }
+        .image-viewer[hidden] { display:none; }
+        .image-viewer img { max-width: min(94vw, 1400px); max-height: 92vh; width:auto; height:auto; object-fit:contain; cursor:default; }
+        .image-viewer button { position:absolute; top:1rem; right:1rem; cursor:pointer; }
         @media screen and (max-width:736px) {
             .project-page { padding:6rem 1.25rem 3rem; }
             .media-grid { column-count:2; }
@@ -62,7 +69,7 @@
     <section class="project-page">
         <div class="inner">
             <div class="project-top">
-                <a href="../index.html#projects" class="button small next back-link">Back to Projects</a>
+                <a href="../index%281%29.html#projects" class="button small next back-link">Back to Projects</a>
                 <p id="project-kicker" class="project-kicker"></p>
                 <h1 id="project-title">Project</h1>
                 <p id="project-tech"></p>
@@ -80,10 +87,15 @@
             <div id="media-grid" class="media-grid" aria-label="Project images and videos"></div>
 
             <div class="project-footer">
-                <a href="../index.html#banner" class="button next">Back to Home</a>
+                <a href="../index%281%29.html#banner" class="button next">Back to Home</a>
             </div>
         </div>
     </section>
+</div>
+
+<div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="Expanded project image">
+    <button type="button" class="button small" id="image-viewer-close" aria-label="Close expanded image">Close</button>
+    <img id="image-viewer-image" alt="">
 </div>
 
 <script>
@@ -188,6 +200,28 @@
         }
 
         grid.appendChild(figure);
+    });
+
+    const viewer = document.getElementById('image-viewer');
+    const viewerImage = document.getElementById('image-viewer-image');
+    const closeViewer = function () {
+        viewer.hidden = true;
+        viewerImage.removeAttribute('src');
+    };
+
+    grid.addEventListener('click', function (event) {
+        const image = event.target.closest('img');
+        if (!image) return;
+        viewerImage.src = image.src;
+        viewerImage.alt = image.alt;
+        viewer.hidden = false;
+    });
+    document.getElementById('image-viewer-close').addEventListener('click', closeViewer);
+    viewer.addEventListener('click', function (event) {
+        if (event.target === viewer) closeViewer();
+    });
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') closeViewer();
     });
 })();
 </script>
