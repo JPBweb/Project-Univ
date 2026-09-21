@@ -18,6 +18,17 @@
             justify-content: center;
             padding: 5.5rem 2rem 2rem;
             box-sizing: border-box;
+            position: relative;
+            isolation: isolate;
+            background: #101820 url("html5up-forty/images/front-photo-background.jpg") center / cover no-repeat;
+        }
+
+        #banner::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: rgba(8, 14, 20, .68);
         }
 
         #banner .inner {
@@ -37,17 +48,19 @@
             margin: 0 0 1rem;
         }
 
-        /* White background circle sits behind the larger portrait without affecting layout. */
+        /* A quiet frame keeps the portrait integrated with the hero. */
         .profile-wrap::before {
             content: "";
             position: absolute;
             top: 0;
             left: 50%;
-            width: 310px;
-            height: 310px;
+            width: 286px;
+            height: 326px;
             transform: translateX(-50%);
-            border-radius: 50%; 
-            background: #fff;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .28);
+            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .3);
             z-index: 0;
             pointer-events: none;
         }
@@ -56,11 +69,11 @@
             position: relative;
             z-index: 1;
 
-            width: 260px;
-            height: 300px;
-            flex: 0 0 300px;
+            width: 230px;
+            height: 270px;
+            flex: 0 0 270px;
 
-            border-radius: 0;
+            border-radius: .8rem;
 
             /* SHOW THE ENTIRE PHOTO */
             object-fit: contain;
@@ -69,7 +82,7 @@
             border: 0;
             padding: 0;
 
-            box-shadow: 0 1.5rem 4rem rgba(0,0,0,.28);
+            box-shadow: 0 .8rem 2rem rgba(0,0,0,.28);
             background: transparent;
 
             animation: photo-in 1s ease both;
@@ -177,7 +190,8 @@
         .projects-controls .button {
             border: 1px solid rgba(255, 255, 255, .55);
             border-radius: 999px;
-            box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .22);
+            background: transparent;
+            box-shadow: none;
             font-weight: 700;
             letter-spacing: .04em;
             transition: background-color .25s ease, border-color .25s ease,
@@ -196,11 +210,11 @@
         .portfolio-nav a:hover,
         .hero-actions .button:hover,
         .projects-controls .button:hover {
-            background: #fff;
-            border-color: #fff;
-            color: #111 !important;
+            background: rgba(255, 255, 255, .18);
+            border-color: rgba(255, 255, 255, .95);
+            color: #fff !important;
             transform: translateY(-2px);
-            box-shadow: 0 .55rem 1.2rem rgba(0, 0, 0, .35);
+            box-shadow: 0 0 1.2rem rgba(255, 255, 255, .35);
         }
 
         #projects {
@@ -223,6 +237,14 @@
             overflow-y: visible;
             scroll-behavior: smooth;
             scrollbar-width: thin;
+            touch-action: pan-x;
+            cursor: grab;
+        }
+
+        .projects-viewport.is-dragging {
+            cursor: grabbing;
+            scroll-behavior: auto;
+            user-select: none;
         }
 
         #projects.tiles .projects-track {
@@ -598,14 +620,14 @@
 
             .profile-wrap::before {
                 top: 0;
-                width: 235px;
-                height: 235px;
+                width: 246px;
+                height: 286px;
                 transform: translateX(-50%);
             }
 
             .profile-photo {
-                width: 220px;
-                height: 260px;
+                width: 200px;
+                height: 240px;
                 object-fit: contain;
                 object-position: center;
             }
@@ -664,7 +686,7 @@
 
                 <div class="hero-actions">
                     <a href="#projects" class="button next scrolly">View My Projects</a>
-                    <a href="certificates.html" class="button">View My Certificates</a>
+                    <a href="certificates.html" class="button next">View My Certificates</a>
                 </div>
             </div>
 
@@ -1031,6 +1053,33 @@
 
     let lastFrame = 0;
     let paused = false;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    viewport.addEventListener('pointerdown', event => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        dragging = true;
+        dragStartX = event.clientX;
+        dragStartScroll = viewport.scrollLeft;
+        viewport.classList.add('is-dragging');
+        viewport.setPointerCapture?.(event.pointerId);
+    });
+
+    viewport.addEventListener('pointermove', event => {
+        if (!dragging) return;
+        viewport.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+    });
+
+    function stopDragging(event) {
+        if (!dragging) return;
+        dragging = false;
+        viewport.classList.remove('is-dragging');
+        viewport.releasePointerCapture?.(event.pointerId);
+    }
+
+    viewport.addEventListener('pointerup', stopDragging);
+    viewport.addEventListener('pointercancel', stopDragging);
 
     function loop(timestamp) {
         if (!lastFrame) lastFrame = timestamp;
