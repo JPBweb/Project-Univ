@@ -28,7 +28,7 @@
             position: absolute;
             inset: 0;
             z-index: -1;
-            background: rgba(8, 14, 20, .68);
+            background: rgba(8, 14, 20, .46);
         }
 
         #banner .inner {
@@ -48,19 +48,35 @@
             margin: 0 0 1rem;
         }
 
-        /* A quiet frame keeps the portrait integrated with the hero. */
+        /* The portrait stays in front of the engineering-style ring and line. */
         .profile-wrap::before {
             content: "";
             position: absolute;
-            top: 0;
+            top: .5rem;
             left: 50%;
-            width: 286px;
-            height: 326px;
+            width: 274px;
+            height: 274px;
             transform: translateX(-50%);
-            border-radius: 1rem;
-            background: rgba(255, 255, 255, .08);
-            border: 1px solid rgba(255, 255, 255, .28);
-            box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .3);
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(244, 190, 82, .9);
+            box-shadow: 0 0 8px rgba(244, 190, 82, .72),
+                        0 0 26px rgba(244, 190, 82, .32),
+                        inset 0 0 12px rgba(244, 190, 82, .12);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .profile-wrap::after {
+            content: "";
+            position: absolute;
+            top: 244px;
+            left: 50%;
+            width: 304px;
+            height: 1px;
+            transform: translateX(-50%);
+            background: rgba(244, 190, 82, .82);
+            box-shadow: 0 0 7px rgba(244, 190, 82, .65);
             z-index: 0;
             pointer-events: none;
         }
@@ -619,10 +635,15 @@
             }
 
             .profile-wrap::before {
-                top: 0;
-                width: 246px;
-                height: 286px;
+                top: .35rem;
+                width: 224px;
+                height: 224px;
                 transform: translateX(-50%);
+            }
+
+            .profile-wrap::after {
+                top: 201px;
+                width: 250px;
             }
 
             .profile-photo {
