@@ -768,6 +768,12 @@
                             My goal is to keep learning by building, testing, troubleshooting,
                             and improving real systems.
                         </p>
+                         <p>
+                           I apologive for bugs found in my portfolio. I am still working on improving my skills to better present my credibility.
+                        </p>
+                        <p>
+                           Thank you!
+                        </p>
                     </div>
 
                     <div>
@@ -1100,6 +1106,39 @@
             window.location.href = 'certificates.html';
         });
     }
+})();
+</script>
+<script>
+(function () {
+    function setupHeroButtons() {
+        const projectsBtn = document.getElementById('btn-view-projects');
+        const certificatesBtn = document.getElementById('btn-view-certificates');
+
+        if (projectsBtn) {
+            projectsBtn.onclick = function (e) {
+                e.preventDefault();
+                const target = document.getElementById('projects');
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    window.location.hash = 'projects';
+                }
+            };
+        }
+
+        if (certificatesBtn) {
+            certificatesBtn.onclick = function (e) {
+                e.preventDefault();
+                window.location.href = 'certificates.html';
+            };
+        }
+    }
+
+    // Run on first load
+    setupHeroButtons();
+
+    // Run again when you come back with the browser Back button
+    window.addEventListener('pageshow', setupHeroButtons);
 })();
 </script>
 
