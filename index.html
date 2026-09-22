@@ -354,8 +354,7 @@
             pointer-events: none;
         }
 
-        /* Transparent project render remains visible over the preview when idle.
-           Keep absolute + full size so the whole card stays clickable on desktop */
+        /* Keep the project link absolute + full size so the whole card is clickable */
         #projects.tiles article .image {
             position: absolute !important;
             inset: 0 !important;
@@ -670,8 +669,8 @@
                 </div>
 
                 <div class="hero-actions">
-                    <a href="#projects" class="button next scrolly">View My Projects</a>
-                    <a href="certificates.html" class="button next">View My Certificates</a>
+                    <a href="#projects" class="button next" id="btn-view-projects">View My Projects</a>
+                    <a href="certificates.html" class="button next" id="btn-view-certificates">View My Certificates</a>
                 </div>
             </div>
 
@@ -983,16 +982,13 @@
         }
 
         card.addEventListener('click', function (event) {
-            // Ignore real interactive controls
             if (event.target.closest('button, video')) return;
 
-            // Prefer the full-card image link
             const link = card.querySelector('a.image[href*="landing.html"]') ||
                          card.querySelector('a[href*="landing.html"]');
 
             if (!link || !link.href) return;
 
-            // Navigate directly – reliable on desktop and mobile
             event.preventDefault();
             window.location.href = link.href;
         });
@@ -1045,11 +1041,10 @@
     let dragStartX = 0;
     let dragStartScroll = 0;
     let dragMoved = false;
-    const DRAG_THRESHOLD = 8; // px – below this = click, not drag
+    const DRAG_THRESHOLD = 8;
 
     viewport.addEventListener('pointerdown', event => {
         if (event.pointerType !== 'mouse' || event.button !== 0) return;
-        // Do NOT capture yet – wait until real movement so clicks still work
         dragging = true;
         dragMoved = false;
         dragStartX = event.clientX;
@@ -1059,7 +1054,7 @@
     viewport.addEventListener('pointermove', event => {
         if (!dragging) return;
         const dx = event.clientX - dragStartX;
-        if (!dragMoved && Math.abs(dx) < DRAG_THRESHOLD) return; // still a click
+        if (!dragMoved && Math.abs(dx) < DRAG_THRESHOLD) return;
         if (!dragMoved) {
             dragMoved = true;
             viewport.classList.add('is-dragging');
@@ -1075,12 +1070,36 @@
         if (dragMoved) {
             viewport.releasePointerCapture?.(event.pointerId);
         }
-        // dragMoved stays true only for this gesture; next pointerdown resets it
     }
 
     viewport.addEventListener('pointerup', stopDragging);
     viewport.addEventListener('pointercancel', stopDragging);
 
+})();
+
+/* Make the two hero buttons always work, even after back-navigation */
+(function () {
+    const projectsBtn = document.getElementById('btn-view-projects');
+    const certificatesBtn = document.getElementById('btn-view-certificates');
+
+    if (projectsBtn) {
+        projectsBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.getElementById('projects');
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                window.location.hash = 'projects';
+            }
+        });
+    }
+
+    if (certificatesBtn) {
+        certificatesBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = 'certificates.html';
+        });
+    }
 })();
 </script>
 
