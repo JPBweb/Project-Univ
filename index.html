@@ -9,6 +9,37 @@
     <noscript><link rel="stylesheet" href="html5up-forty/assets/css/noscript.css" /></noscript>
 
     <style>
+        #header {
+            background: #3a38387e !important;
+        }
+        #header.alt{
+            background: transparent !important;
+        }
+        #header.reveal {
+            background: #3a3939 !important; /* solid black when you scroll */
+        }
+
+        /* Nav links */
+        .portfolio-nav a {
+            color: #fff !important;
+            border-color: rgba(255, 255, 255, 0.55) !important;
+        }
+
+        .portfolio-nav a:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-color: #fff !important;
+            color: #fff !important;
+        }
+    /* Make the Projects section background pure black */
+        #projects, #projects.tiles,
+        #main {
+             background: #181818 !important;
+        }
+
+     /* Optional: make the whole page body black too for consistency */
+        body {
+             background: #0e0d0d !important;
+         }
         /* Portfolio-specific additions while keeping the Forty template */
         #banner {
             min-height: 100vh;
@@ -16,11 +47,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5.5rem 2rem 2rem;
+            padding: 5.5rem 2rem 6rem;
             box-sizing: border-box;
             position: relative;
             isolation: isolate;
-            background: #101820 url("html5up-forty/images/front-photo-background.jpg") center / cover no-repeat;
+            background:
+                linear-gradient( rgba(16, 24, 32, 0.55), rgba(16, 24, 32, 0.75) ),
+             #101820 url("html5up-forty/images/front-photo-background.jpg") center / cover no-repeat;
+             z-index: 2;
         }
 
         #banner::before {
@@ -28,9 +62,26 @@
             position: absolute;
             inset: 0;
             z-index: -1;
-            background: rgba(8, 14, 20, .02);
+            background: rgba(50, 50, 51,);
+            pointer-events: none;
+        }
+        #banner:after {
+            opacity: 0 !important;
+            background: none !important;
         }
 
+        #main,
+        #projects,
+        #projects.tiles {
+            background: #181818 !important;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-actions {
+            position: relative;
+            z-index: 5;
+            margin-bottom: 1.5rem;
+        }
         #banner .inner {
             width: 100%;
             max-width: 1100px;
