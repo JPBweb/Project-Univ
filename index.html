@@ -356,10 +356,10 @@
 
         /* Transparent project render remains visible over the preview when idle. */
         #projects.tiles article .image {
-            position: absolute;
-            inset: 0;
+            position: absolute !important;
+            inset: 0 !important;
             z-index: 5;
-            display: flex;
+            display: block;
             align-items: center;
             justify-content: center;
             padding: 1.25rem;
@@ -372,7 +372,7 @@
 
         /* Project information rises from the bottom to approximately half the card. */
         #projects.tiles article header.major {
-            position: absolute;
+            position: relative;
             left: 0;
             right: 0;
             bottom: 0;
@@ -456,13 +456,6 @@
                 rgba(0,0,0,.68),
                 rgba(0,0,0,.92));
         }
-
-        #projects.tiles article .image,
-        #projects.tiles article header.major a {
-            position: relative;
-            z-index: 9;
-        }
-
         /* Stop the row while the user is interacting with a card. */
         @media screen and (max-width: 980px) {
             #projects.tiles .projects-track { padding: 1.5rem; }
@@ -937,9 +930,8 @@
                 item = document.createElement('img');
                 item.alt = '';
                 item.setAttribute('aria-hidden', 'true');
+                item.src = makeUrl(name);
             }
-
-            item.src = makeUrl(name);
             item.addEventListener('error', () => {
                 item.remove();
                 const index = items.indexOf(item);
@@ -981,16 +973,18 @@
         }
 
         card.addEventListener('click', function (event) {
-    // Don't interfere with buttons, links, or videos
-    if (event.target.closest('a, button, video')) return;
+            // Let the actual project links and controls work normally.
+            if (event.target.closest('a, button, video')) return;
 
-    // Find the project's landing-page link
-    const link = card.querySelector('a[href]');
+            // If the user clicks another part of the card, open its landing page.
+            const link = card.querySelector('a.image[href*="landing.html"]') || card.querySelector('a[href*="landing.html"]');
 
-    if (link) {
-        window.location.href = link.href;
-    }
-});
+            if (!link || !link.href) return;
+
+            //navigate directly
+            event.preventDefault();
+            window.location.href = link.href;
+        });
     }
 
     function fitCardText(card) {
@@ -1039,10 +1033,12 @@
     let dragging = false;
     let dragStartX = 0;
     let dragStartScroll = 0;
+    let dragMoved = false;
 
     viewport.addEventListener('pointerdown', event => {
         if (event.pointerType !== 'mouse' || event.button !== 0) return;
         dragging = true;
+        dragMoved = false;
         dragStartX = event.clientX;
         dragStartScroll = viewport.scrollLeft;
         viewport.classList.add('is-dragging');
@@ -1051,7 +1047,9 @@
 
     viewport.addEventListener('pointermove', event => {
         if (!dragging) return;
-        viewport.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+        const dx = event.clientX - dragStartX;
+        if (Math.abs(dx) > 6) dragMoved = true;
+        viewport.scrollLeft = dragStartScroll - dx;
     });
 
     function stopDragging(event) {
