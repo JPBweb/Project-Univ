@@ -354,25 +354,28 @@
             pointer-events: none;
         }
 
-        /* Transparent project render remains visible over the preview when idle. */
+        /* Transparent project render remains visible over the preview when idle.
+           Keep absolute + full size so the whole card stays clickable on desktop */
         #projects.tiles article .image {
             position: absolute !important;
             inset: 0 !important;
-            z-index: 5;
+            z-index: 6;
             display: block;
-            align-items: center;
-            justify-content: center;
-            padding: 1.25rem;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
             overflow: hidden;
             cursor: pointer;
             background: transparent !important;
             border: 0;
+            text-indent: -9999px;
             transition: opacity .35s ease, transform .45s ease;
         }
 
         /* Project information rises from the bottom to approximately half the card. */
         #projects.tiles article header.major {
-            position: relative;
+            position: absolute;
             left: 0;
             right: 0;
             bottom: 0;
@@ -456,6 +459,13 @@
                 rgba(0,0,0,.68),
                 rgba(0,0,0,.92));
         }
+
+        /* Do NOT force .image to position:relative – that collapses the empty link */
+        #projects.tiles article header.major a {
+            position: relative;
+            z-index: 9;
+        }
+
         /* Stop the row while the user is interacting with a card. */
         @media screen and (max-width: 980px) {
             #projects.tiles .projects-track { padding: 1.5rem; }
@@ -973,15 +983,16 @@
         }
 
         card.addEventListener('click', function (event) {
-            // Let the actual project links and controls work normally.
-            if (event.target.closest('a, button, video')) return;
+            // Ignore real interactive controls
+            if (event.target.closest('button, video')) return;
 
-            // If the user clicks another part of the card, open its landing page.
-            const link = card.querySelector('a.image[href*="landing.html"]') || card.querySelector('a[href*="landing.html"]');
+            // Prefer the full-card image link
+            const link = card.querySelector('a.image[href*="landing.html"]') ||
+                         card.querySelector('a[href*="landing.html"]');
 
             if (!link || !link.href) return;
 
-            //navigate directly
+            // Navigate directly – reliable on desktop and mobile
             event.preventDefault();
             window.location.href = link.href;
         });
@@ -1034,21 +1045,26 @@
     let dragStartX = 0;
     let dragStartScroll = 0;
     let dragMoved = false;
+    const DRAG_THRESHOLD = 8; // px – below this = click, not drag
 
     viewport.addEventListener('pointerdown', event => {
         if (event.pointerType !== 'mouse' || event.button !== 0) return;
+        // Do NOT capture yet – wait until real movement so clicks still work
         dragging = true;
         dragMoved = false;
         dragStartX = event.clientX;
         dragStartScroll = viewport.scrollLeft;
-        viewport.classList.add('is-dragging');
-        viewport.setPointerCapture?.(event.pointerId);
     });
 
     viewport.addEventListener('pointermove', event => {
         if (!dragging) return;
         const dx = event.clientX - dragStartX;
-        if (Math.abs(dx) > 6) dragMoved = true;
+        if (!dragMoved && Math.abs(dx) < DRAG_THRESHOLD) return; // still a click
+        if (!dragMoved) {
+            dragMoved = true;
+            viewport.classList.add('is-dragging');
+            viewport.setPointerCapture?.(event.pointerId);
+        }
         viewport.scrollLeft = dragStartScroll - dx;
     });
 
@@ -1056,7 +1072,10 @@
         if (!dragging) return;
         dragging = false;
         viewport.classList.remove('is-dragging');
-        viewport.releasePointerCapture?.(event.pointerId);
+        if (dragMoved) {
+            viewport.releasePointerCapture?.(event.pointerId);
+        }
+        // dragMoved stays true only for this gesture; next pointerdown resets it
     }
 
     viewport.addEventListener('pointerup', stopDragging);
