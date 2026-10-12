@@ -3,7 +3,7 @@
 <head>
     <title>Certificates | Jibril Paddil</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="html5up-forty/assets/css/main.css" />
     <noscript><link rel="stylesheet" href="html5up-forty/assets/css/noscript.css" /></noscript>
     <style>
@@ -34,10 +34,11 @@
         .certificate-card .button { margin:0; }
         .certificate-card img { cursor:zoom-in; }
         .image-viewer {
-            position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
-            padding:2rem; background:rgba(0,0,0,.86); cursor:zoom-out;
+            position:fixed; inset:0; z-index:1000; width:min(96vw, 1400px); max-width:none; max-height:92vh;
+            margin:auto; padding:2rem; border:1px solid #657278; background:#111518; color:#f1f3f4;
         }
-        .image-viewer[hidden] { display:none; }
+        .image-viewer:not([open]) { display:none; }
+        .image-viewer::backdrop { background:rgba(0,0,0,.86); }
         .image-viewer img { max-width:min(94vw, 1400px); max-height:92vh; width:auto; height:auto; object-fit:contain; cursor:default; }
         .image-viewer button { position:absolute; top:1rem; right:1rem; cursor:pointer; }
         @media screen and (max-width:900px) { .certificate-grid { column-count:2; } }
@@ -46,29 +47,33 @@
             .certificate-grid { column-count:1; }
         }
     </style>
+    <link rel="stylesheet" href="portfolio.css" />
 </head>
-<body class="is-preload">
+<body id="top" class="is-preload">
 <div id="wrapper">
-    <section class="certificates-page">
+    <main class="certificates-page">
         <div class="inner">
-            <a href="index.html#banner" class="button small next">Back to Home</a>
+            <nav aria-label="Page navigation">
+                <a href="index.html" class="button small">Home</a>
+                <a href="index.html#projects" class="button small">Projects</a>
+                <a href="training.html" class="button small">Technical Training</a>
+            </nav>
             <header class="major">
-                <h1>Certificates & Training</h1>
+                <h1>Certificates &amp; Training</h1>
             </header>
             <div class="certificate-intro">
-                <p>Training, seminars, certifications, and professional development records.</p>
+                <p>Certificates currently available in the portfolio. Issuers and dates are shown only when verified.</p>
             </div>
             <div id="certificate-grid" class="certificate-grid" aria-label="Certificates and training records"></div>
             <ul class="actions">
                 <li><a href="#top" class="button next">Back to Top</a></li>
             </ul>
         </div>
-    </section>>
+    </main>
 </div>
-<div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="Expanded certificate image">
-    <button type="button" class="button small" id="image-viewer-close" aria-label="Close expanded image">Close</button>
-    <img id="image-viewer-image" alt="">
-</div>
+<dialog class="image-viewer" id="image-viewer" aria-label="Expanded certificate image">
+    <form method="dialog"><button id="image-viewer-close" type="submit" class="button small" aria-label="Close expanded image">Close</button></form>
+</dialog>
 <script src="html5up-forty/assets/js/jquery.min.js"></script>
 <script src="html5up-forty/assets/js/jquery.scrolly.min.js"></script>
 <script src="html5up-forty/assets/js/browser.min.js"></script>
@@ -79,45 +84,60 @@
 (function () {
     const folder = 'html5up-forty/Certificates/';
     const imageExt = /\.(png|jpe?g|jfif|webp|gif)$/i;
-    const files = [
-        'Tesda NCII.jpg',
-        'Data Visualization of Safety Trends.jpg',
-        'Developing Awareness on Circular Economy Principles and Practices.jpg',
-        'English as a Meduim of Instruction.jpg',
-        'English for Business and Entrepreneurship.jpg',
-        'English for Science, Technology, Engineering and Mathematics (eSTEM).jpg',
-        'English for Tourism Professionals.jpg',
-        'Hazards and Risks in Smart Spaces.jpg',
-        'Introduction to 3D Printing and Technology.png',
-        'Introduction to Robots and Robotics.jpg',
-        'Microsoft Digital Literacy.jpg',
-        'Next-Gen Moves Slaying the College-toCareer Shift.png',
-        'Orienting Oneself To Environmentally Sustainable Work Standards.jpg',
-        'Participating in Workplace Communication.jpg',
-        'Performing Solid Waste Management in the Workplace.jpg',
-        'Receiving and Responding to Workplace Communciation.jpg',
-        'Robot Combat Webinar.png',
-        'Understanding and Presenting Safety Data.jpg',
-        'Using Educational Technology in the English Language Classroom.jpg',
-        'Working in a Gender-Diverse Environment.jpg'
-        
+    const certificates = [
+        { file: 'Tesda NCII.jpg', title: 'TESDA Mechatronics Servicing NC II' },
+        { file: 'Data Visualization of Safety Trends.jpg' },
+        { file: 'Developing Awareness on Circular Economy Principles and Practices.jpg' },
+        { file: 'English as a Meduim of Instruction.jpg' },
+        { file: 'English for Business and Entrepreneurship.jpg' },
+        { file: 'English for Science, Technology, Engineering and Mathematics (eSTEM).jpg' },
+        { file: 'English for Tourism Professionals.jpg' },
+        { file: 'Hazards and Risks in Smart Spaces.jpg' },
+        { file: 'Introduction to 3D Printing and Technology.png' },
+        { file: 'Introduction to Robots and Robotics.jpg' },
+        { file: 'Microsoft Digital Literacy.jpg' },
+        { file: 'Next-Gen Moves Slaying the College-toCareer Shift.png' },
+        { file: 'Orienting Oneself To Environmentally Sustainable Work Standards.jpg' },
+        { file: 'Participating in Workplace Communication.jpg' },
+        { file: 'Performing Solid Waste Management in the Workplace.jpg' },
+        { file: 'Receiving and Responding to Workplace Communciation.jpg' },
+        { file: 'Robot Combat Webinar.png' },
+        { file: 'Understanding and Presenting Safety Data .jpg', title: 'Understanding and Presenting Safety Data' },
+        { file: 'Using Educational Technology in the English Language Classroom.jpg' },
+        { file: 'Working in a Gender-Diverse Environment.jpg' }
     ];
 
     const grid = document.getElementById('certificate-grid');
-    files.forEach(function (name) {
+    certificates.forEach(function (certificate) {
+        const name = certificate.file;
         const card = document.createElement('article');
         card.className = 'certificate-card';
 
         const title = document.createElement('h2');
-        title.textContent = name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' ');
+        title.textContent = certificate.title || name.replace(/\.[^.]+$/, '').trim().replace(/[_-]+/g, ' ');
         card.appendChild(title);
 
         const path = folder + encodeURIComponent(name).replace(/%2F/g, '/');
+        const metadata = document.createElement('dl');
+        metadata.className = 'certificate-metadata';
+        [['Issuing organization', certificate.issuer], ['Date', certificate.date]].forEach(function (item) {
+            if (!item[1]) return;
+            const term = document.createElement('dt');
+            term.textContent = item[0];
+            const value = document.createElement('dd');
+            value.textContent = item[1];
+            metadata.append(term, value);
+        });
+        if (metadata.childElementCount) card.appendChild(metadata);
+
         if (imageExt.test(name)) {
             const image = document.createElement('img');
             image.src = path;
-            image.alt = title.textContent;
+            image.alt = 'Certificate: ' + title.textContent;
             image.loading = 'lazy';
+            image.tabIndex = 0;
+            image.setAttribute('role', 'button');
+            image.setAttribute('aria-label', 'Enlarge ' + image.alt);
             card.appendChild(image);
         }
 
@@ -132,25 +152,42 @@
     });
 
     const viewer = document.getElementById('image-viewer');
-    const viewerImage = document.getElementById('image-viewer-image');
+    let viewerImage;
+    let lastFocusedImage;
     const closeViewer = function () {
-        viewer.hidden = true;
-        viewerImage.removeAttribute('src');
+        if (viewer.open) viewer.close();
     };
+    viewer.addEventListener('close', function () {
+        if (viewerImage) viewerImage.removeAttribute('src');
+        if (lastFocusedImage) lastFocusedImage.focus();
+    });
 
     grid.addEventListener('click', function (event) {
         const image = event.target.closest('img');
         if (!image) return;
+        if (!viewerImage) {
+            viewerImage = document.createElement('img');
+            viewer.appendChild(viewerImage);
+        }
         viewerImage.src = image.src;
         viewerImage.alt = image.alt;
-        viewer.hidden = false;
+        lastFocusedImage = image;
+        viewer.showModal();
     });
-    document.getElementById('image-viewer-close').addEventListener('click', closeViewer);
+    grid.querySelectorAll('img').forEach(function (image) {
+        image.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                image.click();
+            }
+        });
+    });
+    document.getElementById('image-viewer-close').addEventListener('click', function (event) {
+        event.preventDefault();
+        closeViewer();
+    });
     viewer.addEventListener('click', function (event) {
         if (event.target === viewer) closeViewer();
-    });
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') closeViewer();
     });
 })();
 </script>

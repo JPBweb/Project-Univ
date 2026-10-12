@@ -3,9 +3,10 @@
 <head>
     <title>Project | Jibril Paddil</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="../portfolio.css" />
     <style>
         :root { --panel: rgba(255,255,255,.055); --line: rgba(255,255,255,.12); }
         body {
@@ -31,6 +32,13 @@
         }
         .project-description-box h2 { font-size:1rem; margin-bottom:.75rem; }
         #project-description { margin:0; line-height:1.75; }
+        .case-study { margin: 2rem 0 3rem; }
+        .case-study[hidden] { display: none !important; }
+        .case-study h2 { margin-bottom: .75rem; }
+        .case-study-note { max-width: 760px; color: #c4cbd1; }
+        .case-study-grid article { min-height: 8rem; }
+        .case-study-grid h3 { color: #d5c68a; }
+        .case-study-grid p { line-height: 1.65; }
         .media-grid {
             column-count: 3;
             column-gap: 1rem;
@@ -47,10 +55,11 @@
         .media-item img { cursor: zoom-in; }
         .media-item video { background:#080808; }
         .image-viewer {
-            position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center;
-            padding:2rem; background:rgba(0,0,0,.86); cursor:zoom-out;
+            position:fixed; inset:0; z-index:1000; width:min(96vw, 1400px); max-width:none; max-height:92vh;
+            margin:auto; padding:2rem; border:1px solid #657278; background:#111518; color:#f1f3f4;
         }
-        .image-viewer[hidden] { display:none; }
+        .image-viewer:not([open]) { display:none; }
+        .image-viewer::backdrop { background:rgba(0,0,0,.86); }
         .image-viewer img { max-width:min(94vw, 1400px); max-height:92vh; width:auto; height:auto; object-fit:contain; cursor:default; }
         .image-viewer button { position:absolute; top:1rem; right:1rem; cursor:pointer; }
         @media screen and (max-width:736px) {
@@ -65,10 +74,15 @@
 </head>
 <body id="top" class="is-preload">
 <div id="wrapper">
-    <section class="project-page">
+    <main class="project-page">
         <div class="inner">
             <div class="project-top">
-                <a href="../index.html#banner" class="button next">Back to Home</a>
+                <nav aria-label="Page navigation">
+                    <a href="../index.html" class="button small">Home</a>
+                    <a href="../index.html#projects" class="button small">All projects</a>
+                    <a href="../training.html" class="button small">Technical training</a>
+                    <a href="../certificates.html" class="button small">Certificates</a>
+                </nav>
                 <p id="project-kicker" class="project-kicker"></p>
                 <h1 id="project-title">Project</h1>
                 <p id="project-tech"></p>
@@ -80,6 +94,13 @@
                 <p id="project-description"></p>
             </section>
 
+            <section class="case-study" aria-labelledby="case-study-title">
+                <p class="section-kicker">Verified details only</p>
+                <h2 id="case-study-title">Engineering Case Study</h2>
+                <p class="case-study-note">Only confirmed project details are shown.</p>
+                <div id="case-study-grid" class="case-study-grid"></div>
+            </section>
+
             <header class="major">
                 <h2>Project Gallery</h2>
             </header>
@@ -88,17 +109,17 @@
                 <li><a href="#top" class="button next">Back to Top</a></li>
             </ul>
         </div>
-    </section>
+    </main>
 </div>
 
-<div class="image-viewer" id="image-viewer" hidden role="dialog" aria-modal="true" aria-label="Expanded project image">
-    <button type="button" class="button small" id="image-viewer-close" aria-label="Close expanded image">Close</button>
-    <img id="image-viewer-image" alt="">
-</div>
+<dialog class="image-viewer" id="image-viewer" aria-label="Expanded project image">
+    <form method="dialog"><button id="image-viewer-close" type="submit" class="button small" aria-label="Close expanded image">Close</button></form>
+</dialog>
 
 <script>
 (function () {
     const base = 'images/';
+    const videoBase = 'https://media.githubusercontent.com/media/JPBweb/Project-Univ/main/html5up-forty/images/';
     const imageExt = /\.(png|jpe?g|jfif|webp|gif|avif)$/i;
     const videoExt = /\.(mp4|webm|ogg)$/i;
 
@@ -107,40 +128,86 @@
      * You can also add/remove images and videos from each media array.
      */
     const projects = {
+        'rc-car': {
+            title: 'Freelance RC Car Chassis Design',
+            kicker: 'Freelance Mechanical Design',
+            tech: 'Blender · STL · 3MF · 3D printing',
+            description: 'Freelance RC-car chassis modeled in Blender. The design considered component dimensions, placement, and clearances, and STL and 3MF files were prepared for 3D printing.',
+            media: [],
+            caseStudy: {
+                tools: 'Blender; STL and 3MF print-file formats.',
+                contribution: 'Modeled the chassis, considered component dimensions, placement, and clearances, and prepared STL and 3MF files.',
+                testing: 'I did not calibrate a 3D printer or verify the final physical fit through my own test prints.'
+            },
+            architectureImage: '',
+            sourceUrl: ''
+        },
         sumobot: {
-            title: 'DarkKnight-Inspired Autonomous Sumobot',
-            kicker: 'Autonomous Robotics',
-            tech: 'Blender · ESP32 · Ultrasonic Sensors · 3D Printing',
-            description: 'An autonomous sumobot designed in Blender and built around an ESP32. The project combines ultrasonic sensing, programmed decision-making, and a 3D-printed body designed for stability and controlled movement.',
-            media: ['sumubot2.png','sumubot3.png','sumubot4.png','sumubot5.png','sumubot6.png','sumubot7.png','sumubot8.png','sumubot9.png','sumubot10.png','sumubot11.png']
+            title: 'Freelance Sumobot Chassis Design',
+            kicker: 'Freelance Mechanical Design',
+            tech: 'Blender · Chassis design',
+            description: 'Freelance sumobot chassis designed in Blender. My contribution was mechanical design, not building or programming the robot.',
+            media: ['sumubot2.png','sumubot3.png','sumubot4.png','sumubot5.png','sumubot6.png','sumubot7.png','sumubot8.png','sumubot9.png','sumubot11.png'],
+            caseStudy: {
+                tools: 'Blender.',
+                contribution: 'Designed the chassis in Blender. Building and programming the robot were not my contribution.'
+            },
+            architectureImage: '',
+            sourceUrl: ''
+        },
+        mearm: {
+            title: 'MeArm Robotic Arm Assembly',
+            kicker: 'Mechanical Assembly',
+            tech: 'MeArm · Existing online 3D model',
+            description: 'Assembled a MeArm robotic arm using an existing 3D model found online. The design was not my own.',
+            media: [],
+            caseStudy: {
+                contribution: 'Assembled the robotic arm using an existing online 3D model.'
+            },
+            architectureImage: '',
+            sourceUrl: ''
         },
         jeepney: {
             title: 'GPS-Based Jeepney Arrival Time Prediction System',
             kicker: 'Thesis Project',
-            tech: 'GPS · Arduino · 3D-Printed Enclosure',
-            description: 'A GPS-based prototype that helps estimate jeepney arrival times. The project combines location tracking, Arduino hardware, data handling, and a 3D-printed enclosure designed for practical transport use.',
-            media: ['jeepney2.png','jeepney3.png','jeepney4.png','jeepney5.png','jeepney6.png','jeepney7.png','jeepney8.png','jeepney9.png','jeepney10.png','jeepneyvid.mp4']
+            tech: 'Team thesis · Design contribution',
+            description: 'Team thesis about a GPS-based jeepney arrival-time prediction system. My confirmed individual contribution was design.',
+            media: ['jeepney2.png','jeepney3.png','jeepney4.png','jeepney5.png','jeepney6.png','jeepney7.png','jeepney8.png','jeepney9.png','jeepney10.png','jeepneyvid.mp4'],
+            caseStudy: {
+                contribution: 'Design.'
+            },
+            architectureImage: '',
+            sourceUrl: ''
         },
         rivet: {
             title: 'Automated Rivet Manufacturing Process',
             kicker: 'Manufacturing Automation',
-            tech: '3D Animation · Raw Material Handling · Manufacturing Process',
-            description: 'A visualized automated manufacturing line for rivet production. It presents the movement of raw material through handling, forming, assembly, and inspection stages as one coordinated process.',
-            media: ['rivet-process2.png','rivet-process3.png','rivet-process4.png','rivet-process5.png','rivet-process6.png','rivet-process7.png','rivet-processvid.mp4']
+            tech: 'Manufacturing process animation',
+            description: 'Animation of an automated rivet manufacturing process.',
+            media: ['rivet-process2.png','rivet-process3.png','rivet-process4.png','rivet-process5.png','rivet-process6.png','rivet-process7.png','rivet-processvid.mp4'],
+            caseStudy: {},
+            architectureImage: '',
+            sourceUrl: ''
         },
         'smart-building': {
             title: 'Smart Building Automation System',
             kicker: 'Automation & Monitoring',
-            tech: 'Group Project · Sensors · Monitoring · Automation',
-            description: 'A group automation project that uses multiple sensors to monitor building conditions and trigger control actions. The system demonstrates how sensing, logic, and monitoring can improve building operation.',
-            media: ['smart-building.bg.jfif','smart-building2.png','smart-building3.png','smart-building4.png','smart-building5.png','smart-buildingvid.mp4']
+            tech: 'Introductory group project',
+            description: 'Group project titled Smart Building Automation System.',
+            media: ['smart-building.bg.jfif','smart-building2.png','smart-building3.png','smart-building4.png','smart-building5.png','smart-buildingvid.mp4'],
+            caseStudy: {},
+            architectureImage: '',
+            sourceUrl: ''
         },
         'smart-house': {
             title: '3D Printed Smart House',
             kicker: '3D Design & Home Automation',
-            tech: 'Group Project · Blender · 3D Printing · Home Automation',
-            description: 'A 3D-printed smart house model combining Blender design with home-automation ideas. It demonstrates how a physical model can bring together layout planning, electronics, sensing, and automated control.',
-            media: ['smart-house2.png','smart-house3.png','smart-house4.png','smart-house5.png','smart-house6.png','smart-house8.png','smart-house9.jfif','smart-house10.jfif','smart-house11.jfif','smart-house12.jfif','smart-house13.jfif','smart-house16.png','smart-house17.png','smart-house18.png','smart-housevid.mp4','smart-housevid2.mp4','smart-housevid3.mp4','smart-housevid4.mp4']
+            tech: 'Introductory group project',
+            description: 'Group project titled 3D Printed Smart House.',
+            media: ['smart-house2.png','smart-house3.png','smart-house4.png','smart-house5.png','smart-house6.png','smart-house8.png','smart-house9.jfif','smart-house10.jfif','smart-house11.jfif','smart-house12.jfif','smart-house13.jfif','smart-house16.png','smart-house17.png','smart-house18.png','smart-housevid.mp4','smart-housevid2.mp4','smart-housevid3.mp4','smart-housevid4.mp4'],
+            caseStudy: {},
+            architectureImage: '',
+            sourceUrl: ''
         }
     };
 
@@ -154,6 +221,67 @@
     document.getElementById('project-description').textContent = project.description;
 
     const grid = document.getElementById('media-grid');
+    const caseStudyGrid = document.getElementById('case-study-grid');
+    const caseStudyLabels = {
+        tools: 'Hardware, software & tools',
+        problem: 'Engineering problem',
+        objectives: 'Objectives & requirements',
+        contribution: 'Individual contribution',
+        architecture: 'System architecture',
+        implementation: 'Implementation & control',
+        testing: 'Testing & results',
+        limitations: 'Limitations',
+        lessons: 'Lessons learned'
+    };
+    const caseStudy = project.caseStudy || {};
+
+    Object.keys(caseStudyLabels).forEach(function (key) {
+        if (!caseStudy[key] && !(key === 'architecture' && project.architectureImage)) return;
+        const article = document.createElement('article');
+        const heading = document.createElement('h3');
+        heading.textContent = caseStudyLabels[key];
+        article.appendChild(heading);
+        if (caseStudy[key]) {
+            const description = document.createElement('p');
+            description.textContent = caseStudy[key];
+            article.appendChild(description);
+        }
+
+        if (key === 'architecture' && project.architectureImage &&
+            /^[\w-]+\.(png|jpe?g|webp)$/i.test(project.architectureImage)) {
+            const image = document.createElement('img');
+            image.src = base + project.architectureImage;
+            image.alt = project.title + ' system architecture diagram';
+            image.loading = 'lazy';
+            image.tabIndex = 0;
+            image.setAttribute('role', 'button');
+            image.setAttribute('aria-label', 'Enlarge ' + image.alt);
+            image.addEventListener('click', function () {
+                showImage(image);
+            });
+            image.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    image.click();
+                }
+            });
+            article.appendChild(image);
+        }
+
+        caseStudyGrid.appendChild(article);
+    });
+    if (!caseStudyGrid.children.length && !project.architectureImage) {
+        document.querySelector('.case-study').hidden = true;
+    }
+
+    if (project.sourceUrl && /^https:\/\/[^\s]+$/i.test(project.sourceUrl)) {
+        const sourceLink = document.createElement('a');
+        sourceLink.href = project.sourceUrl;
+        sourceLink.target = '_blank';
+        sourceLink.rel = 'noopener';
+        sourceLink.textContent = 'View project source code';
+        caseStudyGrid.appendChild(sourceLink);
+    }
 
     const videoObserver = 'IntersectionObserver' in window
         ? new IntersectionObserver(function (entries, observer) {
@@ -175,7 +303,7 @@
 
         if (videoExt.test(name)) {
             const video = document.createElement('video');
-            video.dataset.src = base + name;
+            video.dataset.src = videoBase + name;
             video.controls = true;
             video.muted = true;
             video.playsInline = true;
@@ -192,6 +320,9 @@
             img.src = base + name;
             img.alt = project.title + ' project image';
             img.loading = 'lazy';
+            img.tabIndex = 0;
+            img.setAttribute('role', 'button');
+            img.setAttribute('aria-label', 'Enlarge ' + img.alt);
             figure.appendChild(img);
         } else {
             return;
@@ -200,26 +331,56 @@
         grid.appendChild(figure);
     });
 
+    if (!grid.children.length) {
+        const empty = document.createElement('p');
+        empty.className = 'media-empty';
+        empty.setAttribute('role', 'status');
+        empty.textContent = 'No project media is available for this case study.';
+        grid.appendChild(empty);
+    }
+
     const viewer = document.getElementById('image-viewer');
-    const viewerImage = document.getElementById('image-viewer-image');
+    let viewerImage;
+    let lastFocusedImage;
+    function showImage(image) {
+        if (!viewerImage) {
+            viewerImage = document.createElement('img');
+            viewer.appendChild(viewerImage);
+        }
+        viewerImage.src = image.src;
+        viewerImage.alt = image.alt;
+        lastFocusedImage = image;
+        viewer.showModal();
+    }
+
+    grid.querySelectorAll('img').forEach(function (image) {
+        image.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                image.click();
+            }
+        });
+    });
+
     const closeViewer = function () {
-        viewer.hidden = true;
-        viewerImage.removeAttribute('src');
+        if (viewer.open) viewer.close();
     };
+    viewer.addEventListener('close', function () {
+        if (viewerImage) viewerImage.removeAttribute('src');
+        if (lastFocusedImage) lastFocusedImage.focus();
+    });
 
     grid.addEventListener('click', function (event) {
         const image = event.target.closest('img');
         if (!image) return;
-        viewerImage.src = image.src;
-        viewerImage.alt = image.alt;
-        viewer.hidden = false;
+        showImage(image);
     });
-    document.getElementById('image-viewer-close').addEventListener('click', closeViewer);
+    document.getElementById('image-viewer-close').addEventListener('click', function (event) {
+        event.preventDefault();
+        closeViewer();
+    });
     viewer.addEventListener('click', function (event) {
         if (event.target === viewer) closeViewer();
-    });
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') closeViewer();
     });
 })();
 </script>

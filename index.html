@@ -1,31 +1,38 @@
 <!DOCTYPE HTML>
 <html lang="en">
+
 <head>
     <title>Jibril Paddil | Mechatronics Engineering Portfolio</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="description" content="Jibril Paddil's Mechatronics Engineering portfolio featuring PLCs, automation, robotics, electro-pneumatics, Arduino, CAD, and 3D design." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Portfolio of Jibril Paddil, a Mechatronics Engineering graduate with hands-on training in automation, embedded systems, CAD, and technical projects." />
     <link rel="stylesheet" href="html5up-forty/assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="html5up-forty/assets/css/noscript.css" /></noscript>
+    <noscript>
+        <link rel="stylesheet" href="html5up-forty/assets/css/noscript.css" />
+    </noscript>
 
     <style>
-        body, #wrapper{
-    background:
-        linear-gradient(
-            rgba(10, 14, 20, 0.55),
-            rgba(10, 14, 20, 0.75)
-        ),
-        #0a0e14 url("html5up-forty/images/front-photo-background.jpg") center top / cover no-repeat fixed;
-    background-color: #0a0e14;
+        body,
+        #wrapper {
+            background:
+                linear-gradient(rgba(10, 14, 20, 0.55),
+                    rgba(10, 14, 20, 0.75)),
+                #0a0e14 url("html5up-forty/images/front-photo-background.jpg") center top / cover no-repeat fixed;
+            background-color: #0a0e14;
         }
+
         #header {
             background: #3a38387e !important;
         }
-        #header.alt{
+
+        #header.alt {
             background: transparent !important;
         }
+
         #header.reveal {
-            background: #3a3939 !important; /* solid black when you scroll */
+            background: #3a3939 !important;
+            /* solid black when you scroll */
         }
 
         /* Nav links */
@@ -39,18 +46,21 @@
             border-color: #fff !important;
             color: #fff !important;
         }
-    /* Make the Projects section background pure black */
-        #projects, #projects.tiles,
+
+        /* Make the Projects section background pure black */
+        #projects,
+        #projects.tiles,
         #main {
-             background: rgba(0, 0, 0, 0.85) !important;
-             position: relative;
-             z-index: 1;
+            background: rgba(0, 0, 0, 0.85) !important;
+            position: relative;
+            z-index: 1;
         }
 
-     /* Optional: make the whole page body black too for consistency */
+        /* Optional: make the whole page body black too for consistency */
         body {
-             background: #0e0d0d !important;
-         }
+            background: #0e0d0d !important;
+        }
+
         /* Portfolio-specific additions while keeping the Forty template */
         #banner {
             min-height: 100vh;
@@ -66,7 +76,7 @@
             z-index: 2;
             background-attachment: scroll;
             background: transparent !important;
-             
+
         }
 
         #banner::before,
@@ -79,16 +89,18 @@
         #projects,
         #projects.tiles {
             background: #181818 !important;
-            margin-top:0;
+            margin-top: 0;
             position: relative;
             z-index: 1;
         }
+
         .hero-actions {
             position: relative;
             z-index: 5;
             margin-top: 1.25rem;
             margin-bottom: 0;
         }
+
         #banner .inner {
             transform: none !important;
             margin: 0 auto;
@@ -123,12 +135,12 @@
             padding: 0;
 
             box-shadow: 0 0 7px rgba(244, 190, 82, .42),
-                        0 .8rem 2rem rgba(0,0,0,.28);
+                0 .8rem 2rem rgba(0, 0, 0, .28);
             background: transparent;
 
             animation: photo-in 1s ease both;
         }
-        
+
 
         .intro-text h1 {
             margin-bottom: .6rem;
@@ -139,7 +151,7 @@
             animation: rise-in .9s .2s ease both;
         }
 
-                .intro-text p {
+        .intro-text p {
             margin-bottom: 0;
             max-width: 760px;
         }
@@ -236,7 +248,7 @@
             font-weight: 700;
             letter-spacing: .04em;
             transition: background-color .25s ease, border-color .25s ease,
-                        box-shadow .25s ease, transform .25s ease;
+                box-shadow .25s ease, transform .25s ease;
         }
 
         .portfolio-nav a {
@@ -339,9 +351,9 @@
             background: #181818 center / cover no-repeat;
             transform: scale(1);
             transform-origin: center center;
-            transition: transform .65s cubic-bezier(.2,.8,.2,1),
-                        box-shadow .65s ease,
-                        filter .5s ease;
+            transition: transform .65s cubic-bezier(.2, .8, .2, 1),
+                box-shadow .65s ease,
+                filter .5s ease;
             will-change: transform;
             z-index: 1;
         }
@@ -370,8 +382,8 @@
             z-index: 2;
             pointer-events: none;
             background: linear-gradient(to bottom,
-                rgba(0,0,0,.16),
-                rgba(0,0,0,.50));
+                    rgba(0, 0, 0, .16),
+                    rgba(0, 0, 0, .50));
             opacity: .78;
             transition: opacity .85s ease, background .85s ease;
         }
@@ -390,6 +402,19 @@
             transition: opacity 1.2s ease-in-out;
         }
 
+        #projects.tiles article .project-preview-empty {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            padding: 2rem;
+            color: #f1f3f4;
+            background: #20252a;
+            text-align: center;
+            line-height: 1.5;
+        }
+
         #projects.tiles article .project-preview img.active,
         #projects.tiles article .project-preview video.active {
             opacity: 1;
@@ -406,7 +431,7 @@
             object-fit: cover;
             object-position: center;
             opacity: 0;
-            transition: opacity .3s ease, transform .55s cubic-bezier(.2,.8,.2,1);
+            transition: opacity .3s ease, transform .55s cubic-bezier(.2, .8, .2, 1);
             pointer-events: none;
         }
 
@@ -445,10 +470,10 @@
             justify-content: flex-end;
             gap: .45rem;
             overflow: visible;
-            background: linear-gradient(to top, rgba(7,7,7,.97), rgba(7,7,7,.74), transparent);
+            background: linear-gradient(to top, rgba(7, 7, 7, .97), rgba(7, 7, 7, .74), transparent);
             transform: translateY(105%);
             opacity: 0;
-            transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
+            transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .3s ease;
             pointer-events: auto;
         }
 
@@ -474,7 +499,9 @@
             overflow: visible;
         }
 
-        #projects.tiles article header.major a { color: #fff; }
+        #projects.tiles article header.major a {
+            color: #fff;
+        }
 
         #projects.tiles article.has-long-content header.major {
             height: 68%;
@@ -486,7 +513,7 @@
         #projects.tiles article.is-hovered {
             transform: scale(1.16);
             z-index: 50;
-            box-shadow: 0 1.5rem 3rem rgba(0,0,0,.48);
+            box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, .48);
         }
 
         #projects.tiles article:hover .cover-photo,
@@ -511,8 +538,8 @@
         #projects.tiles article.is-hovered .project-preview::after {
             opacity: 1;
             background: linear-gradient(to bottom,
-                rgba(0,0,0,.68),
-                rgba(0,0,0,.92));
+                    rgba(0, 0, 0, .68),
+                    rgba(0, 0, 0, .92));
         }
 
         /* Do NOT force .image to position:relative – that collapses the empty link */
@@ -523,7 +550,9 @@
 
         /* Stop the row while the user is interacting with a card. */
         @media screen and (max-width: 980px) {
-            #projects.tiles .projects-track { padding: 1.5rem; }
+            #projects.tiles .projects-track {
+                padding: 1.5rem;
+            }
         }
 
         @media screen and (max-width: 736px) {
@@ -550,6 +579,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             #projects.tiles article,
             #projects.tiles article .image,
             #projects.tiles article .image img,
@@ -591,6 +621,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             #projects.tiles article,
             #projects.tiles article .image,
             #projects.tiles article .image img,
@@ -601,21 +632,43 @@
         }
 
         @keyframes photo-in {
-            from { opacity: 0; transform: scale(.82); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(.82);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         @keyframes rise-in {
-            from { opacity: 0; transform: translateY(34px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(34px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes slide-in {
-            from { opacity: 0; transform: translateX(-42px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-42px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             .profile-photo,
             .intro-text,
             #banner .actions {
@@ -627,6 +680,73 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
+        }
+
+        .portfolio-section {
+            padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+            scroll-margin-top: 5rem;
+        }
+
+        .portfolio-section>.inner {
+            width: min(100%, 1120px);
+            margin: 0 auto;
+        }
+
+        .section-lede {
+            max-width: 760px;
+            color: #c4cbd1;
+        }
+
+        .section-kicker,
+        .item-kicker {
+            color: #9bb6bd;
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .skills-grid,
+        .training-facts,
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+
+        .skills-grid article,
+        .training-facts article,
+        .case-study-grid article {
+            padding: 1.25rem;
+            border: 1px solid #343b40;
+            background: #191e22;
+        }
+
+        .skills-grid h3,
+        .training-facts h3,
+        .case-study-grid h3 {
+            margin: 0 0 .6rem;
+            font-size: 1.05rem;
+        }
+
+        .skills-grid p,
+        .training-facts p,
+        .case-study-grid p {
+            margin: 0;
+            color: #c4cbd1;
+        }
+
+        .skill-level {
+            display: inline-block;
+            margin-bottom: .6rem;
+            color: #d5c68a;
+            font-size: .76rem;
+            font-weight: 700;
+        }
+
+        .portfolio-section .text-link {
+            color: #d5c68a;
+            border-bottom: 1px dotted currentColor;
         }
 
         .skill-list {
@@ -656,6 +776,7 @@
                 object-fit: contain;
                 object-position: center;
             }
+
             .profile-divider {
                 width: 85%;
                 z-index: 2;
@@ -684,521 +805,616 @@
             .about-grid {
                 grid-template-columns: 1fr;
             }
+
+            .portfolio-nav {
+                gap: .25rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                scrollbar-width: thin;
+            }
+
+            .portfolio-nav a {
+                flex: 0 0 auto;
+                padding: 0 .7rem;
+                font-size: .68rem;
+            }
+
+            .skills-grid,
+            .training-facts,
+            .case-study-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <link rel="stylesheet" href="portfolio.css" />
 </head>
 
 <body class="is-preload">
 
-<div id="wrapper">
+    <div id="wrapper">
 
-    <!-- Navigation -->
-    <header id="header" class="alt">
-        <nav class="portfolio-nav" aria-label="Main navigation">
-            <a href="#banner">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="certificates.html">Certificates</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About Me</a>
-        </nav>
-    </header>
+        <!-- Navigation -->
+        <header id="header" class="alt">
+            <nav class="portfolio-nav" aria-label="Main navigation">
+                <a href="#banner">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#training">Training</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="certificates.html">Certificates</a>
+                <a href="#about">About Me</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
 
-    <!-- Hero -->
-    <section id="banner" class="major">
-        <div class="inner">
-            <div class="profile-wrap">
-                <!-- Put your photo at images/jibril.jpg -->
-                <img class="profile-photo"
-                     src="html5up-forty/images/profile-photo.png"
-                     alt="Jibril Paddil">
-                <div class="profile-divider"></div>
-
-                <div class="intro-text">
-                    <header class="major">
-                        <h1>Hi, I'm Jibril Paddil.</h1>
-                    </header>
-                    <div class="content">
-                        <p>
-                            Mechatronics Engineer · TESDA Certified ·  CAD & 3D Designer
-                        </p>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="#projects" class="button next" id="btn-view-projects">View My Projects</a>
-                    <a href="certificates.html" class="button next" id="btn-view-certificates">View My Certificates</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <div id="main">
-
-        <section id="projects" class="tiles" aria-label="Projects">
-            <div class="projects-heading">
-                <h2>Projects</h2>
-                <div class="projects-controls" aria-label="Project navigation">
-                    <button type="button" class="button" id="projects-prev" aria-label="Previous projects">&#8592;</button>
-                    <button type="button" class="button" id="projects-next" aria-label="Next projects">&#8594;</button>
-                </div>
-            </div>
-            <div class="projects-viewport">
-                <div class="projects-track">
-                <article data-cover="sumubot-cp.png" data-previews="sumubot2.png|sumubot3.png|sumubot4.png|sumubot5.png|sumubot6.png|sumubot7.png|sumubot8.png|sumubot9.png|sumubot10.png|sumubot11.png">
-                    <div class="project-preview" aria-hidden="true"></div>
-                    <img class="cover-photo" src="html5up-forty/images/sumubot-cp.png" alt="" aria-hidden="true">
-                    <a href="html5up-forty/landing.html?project=sumobot" class="image" aria-label="Open DarkKnight-inspired autonomous sumobot project">
-                    </a>
-                    <header class="major">
-                        <h3><a href="html5up-forty/landing.html?project=sumobot" class="link">DarkKnight-Inspired Autonomous Sumobot</a></h3>
-                        <p>Blender · ESP32 · Ultrasonic Sensors · 3D Printing</p>
-                    </header>
-                </article>
-
-                <article data-cover="jeepney-cp.png" data-previews="jeepney2.png|jeepney3.png|jeepney4.png|jeepney5.png|jeepney6.png|jeepney7.png|jeepney8.png|jeepney9.png|jeepney10.png|jeepneyvid.mp4">
-                    <div class="project-preview" aria-hidden="true"></div>
-                    <img class="cover-photo" src="html5up-forty/images/jeepney-cp.png" alt="" aria-hidden="true">
-                    <a href="html5up-forty/landing.html?project=jeepney" class="image" aria-label="Open GPS-based jeepney arrival time prediction system project">
-
-                    </a>
-                    <header class="major">
-                        <h3><a href="html5up-forty/landing.html?project=jeepney" class="link">GPS-Based Jeepney Arrival Time Prediction System</a></h3>
-                        <p>Thesis Project · GPS · Arduino · 3D-Printed Enclosure</p>
-                    </header>
-                </article>
-
-                <article data-cover="rivet-process-cp.png" data-previews="rivet-process2.png|rivet-process3.png|rivet-process4.png|rivet-process5.png|rivet-process6.png|rivet-process7.png|rivet-processvid.mp4">
-                    <div class="project-preview" aria-hidden="true"></div>
-                    <img class="cover-photo" src="html5up-forty/images/rivet-process-cp.png" alt="" aria-hidden="true">
-                    <a href="html5up-forty/landing.html?project=rivet" class="image" aria-label="Open automated rivet manufacturing process project">
-                    </a>
-                    <header class="major">
-                        <h3><a href="html5up-forty/landing.html?project=rivet" class="link">Automated Rivet Manufacturing Process</a></h3>
-                        <p>3D Animation · Raw Material Handling · Manufacturing Process</p>
-                    </header>
-                </article>
-
-                <article data-cover="smart-building-cp.png" data-previews="smart-building.bg.jfif|smart-building2.png|smart-building3.png|smart-building4.png|smart-building5.png|smart-buildingvid.mp4">
-                    <div class="project-preview" aria-hidden="true"></div>
-                    <img class="cover-photo" src="html5up-forty/images/smart-building-cp.png" alt="" aria-hidden="true">
-                    <a href="html5up-forty/landing.html?project=smart-building" class="image" aria-label="Open smart building automation system project">
-                    </a>
-                    <header class="major">
-                        <h3><a href="html5up-forty/landing.html?project=smart-building" class="link">Smart Building Automation System</a></h3>
-                        <p>Group Project · Six Sensors · Monitoring · Automation</p>
-                    </header>
-                </article>
-
-                <article data-cover="smart-house-cp.png" data-previews="smart-house2.png|smart-house3.png|smart-house4.png|smart-house5.png|smart-house6.png|smart-house8.png|smart-house9.jfif|smart-house10.jfif|smart-house11.jfif|smart-house12.jfif|smart-house13.jfif|smart-house16.png|smart-house17.png|smart-house18.png|smart-housevid.mp4|smart-housevid2.mp4|smart-housevid3.mp4|smart-housevid4.mp4">
-                    <div class="project-preview" aria-hidden="true"></div>
-                    <img class="cover-photo" src="html5up-forty/images/smart-house-cp.png" alt="" aria-hidden="true">
-                    <a href="html5up-forty/landing.html?project=smart-house" class="image" aria-label="Open 3D printed smart house project">
-                    </a>
-                    <header class="major">
-                        <h3><a href="html5up-forty/landing.html?project=smart-house" class="link">3D Printed Smart House</a></h3>
-                        <p>Group Project · Blender · 3D Printing · Home Automation</p>
-                    </header>
-                </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- About -->
-        <section id="about">
+        <!-- Hero -->
+        <section id="banner" class="major">
             <div class="inner">
-                <header class="major">
-                    <h2>About Me</h2>
-                </header>
+                <div class="profile-wrap">
+                    <!-- Existing portrait photo; replace this local image only when you have a preferred alternative. -->
+                    <img class="profile-photo" src="html5up-forty/images/profile-photo.png" alt="Jibril Paddil">
+                    <div class="profile-divider"></div>
 
-                <div class="about-grid">
-                    <div>
-                        <p>
-                            I graduated with a Bachelor of Mechatronics Engineering from
-                            Saint Louis University. My engineering work combines programming,
-                            electronics, mechanical systems, automation, and creative design.
-                        </p>
-                        <p>
-                            I also hold a TESDA National Certificate II in Mechatronics Servicing.
-                            My goal is to keep learning by building, testing, troubleshooting,
-                            and improving real systems.
-                        </p>
-                         <p>
-                           I apologize for bugs found in my portfolio. I am constantly working on improving my skills to better present my credibility.
-                        </p>
-                        <p>
-                           Thank you!
-                        </p>
+                    <div class="intro-text">
+                        <header class="major">
+                            <h1>Jibril Paddil</h1>
+                        </header>
+                        <div class="content">
+                            <p class="hero-headline">
+                                Mechatronics Engineering Graduate | Mechanical Design, Prototyping &amp; Industrial
+                                Automation
+                            </p>
+                            <p class="hero-summary">
+                                I’m a Mechatronics Engineering graduate interested in mechanical design,
+                                prototyping, and industrial automation. I enjoy developing 3D models for
+                                physical applications and learning how mechanical components, sensors,
+                                actuators, and control systems work together. I’m developing my SolidWorks,
+                                PLC, and Python skills through practice and hands-on experience.
+                            </p>
+                        </div>
                     </div>
 
-                    <div>
-                        <h3>Technical Focus</h3>
-                        <ul class="skill-list">
-                            <li>PLC Programming & Ladder Logic</li>
-                            <li>Rapid Prototyping</li>
-                            <li>3D Design & Printing</li>
-                            <li>Industrial Automation & Control</li>
-                            <li>Electro-Pneumatics</li>
-                            <li>Arduino & Embedded Systems</li>
-                            <li>Sensors, Motors & Actuators</li>
-                            
-                        </ul>
+                    <div class="hero-actions">
+                        <a href="#projects" class="button next" id="btn-view-projects">View Projects</a>
+                        <a href="#contact" class="button next">Contact Me</a>
+                        <div id="resume-action" aria-live="polite"></div>
                     </div>
                 </div>
 
             </div>
         </section>
+
+        <!-- Projects -->
+        <main id="main">
+
+            <section id="projects" class="tiles" aria-label="Projects">
+                <div class="projects-heading">
+                    <div>
+                        <p class="section-kicker">Mechanical design · prototyping · mechatronics</p>
+                        <h2>Projects</h2>
+                    </div>
+                    <div class="projects-controls" aria-label="Project navigation">
+                        <button type="button" class="button" id="projects-prev"
+                            aria-label="Previous projects">&#8592;</button>
+                        <button type="button" class="button" id="projects-next"
+                            aria-label="Next projects">&#8594;</button>
+                    </div>
+                </div>
+                <div class="projects-viewport">
+                    <div class="projects-track">
+                        <article data-cover="" data-previews="" data-empty-state="No RC-car design media supplied yet.">
+                            <div class="project-preview"></div>
+                            <a href="html5up-forty/landing.html?project=rc-car" class="image"
+                                aria-label="Open freelance RC car chassis design case study"></a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=rc-car" class="link">Freelance RC Car
+                                        Chassis Design</a></h3>
+                                <p>My contribution: Blender chassis modeling and STL/3MF print-file preparation.</p>
+                            </header>
+                        </article>
+
+                        <article data-cover="sumubot-cp.png"
+                            data-previews="sumubot2.png|sumubot3.png|sumubot4.png|sumubot5.png|sumubot6.png|sumubot7.png|sumubot8.png|sumubot9.png|sumubot11.png">
+                            <div class="project-preview"></div>
+                            <img class="cover-photo" src="html5up-forty/images/sumubot-cp.png" alt=""
+                                aria-hidden="true">
+                            <a href="html5up-forty/landing.html?project=sumobot" class="image"
+                                aria-label="Open freelance sumobot chassis design case study">
+                            </a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=sumobot" class="link">Freelance Sumobot
+                                        Chassis Design</a></h3>
+                                <p>My contribution: Blender chassis design, component placement, and clearance
+                                    considerations.</p>
+                            </header>
+                        </article>
+
+                        <article data-cover="" data-previews="" data-empty-state="No MeArm project media supplied yet.">
+                            <div class="project-preview"></div>
+                            <a href="html5up-forty/landing.html?project=mearm" class="image"
+                                aria-label="Open MeArm robotic arm assembly case study"></a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=mearm" class="link">MeArm Robotic Arm
+                                        Assembly</a></h3>
+                                <p>Assembled an arm from an existing online 3D model; no original design or programming
+                                    claimed.</p>
+                            </header>
+                        </article>
+
+                        <article data-cover="jeepney-cp.png"
+                            data-previews="jeepney2.png|jeepney3.png|jeepney4.png|jeepney5.png|jeepney6.png|jeepney7.png|jeepney8.png|jeepney9.png|jeepney10.png|jeepneyvid.mp4">
+                            <div class="project-preview"></div>
+                            <img class="cover-photo" src="html5up-forty/images/jeepney-cp.png" alt=""
+                                aria-hidden="true">
+                            <a href="html5up-forty/landing.html?project=jeepney" class="image"
+                                aria-label="Open GPS-based jeepney arrival time prediction system project">
+
+                            </a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=jeepney" class="link">GPS-Based Jeepney
+                                        Arrival Time Prediction System</a></h3>
+                                <p>Team thesis · My individual contribution: design.</p>
+                            </header>
+                        </article>
+
+                        <article data-cover="rivet-process-cp.png"
+                            data-previews="rivet-process2.png|rivet-process3.png|rivet-process4.png|rivet-process5.png|rivet-process6.png|rivet-process7.png|rivet-processvid.mp4">
+                            <div class="project-preview"></div>
+                            <img class="cover-photo" src="html5up-forty/images/rivet-process-cp.png" alt=""
+                                aria-hidden="true">
+                            <a href="html5up-forty/landing.html?project=rivet" class="image"
+                                aria-label="Open automated rivet manufacturing process project">
+                            </a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=rivet" class="link">Automated Rivet
+                                        Manufacturing Process</a></h3>
+                                <p>Manufacturing process animation.</p>
+                            </header>
+                        </article>
+
+                        <article data-cover="smart-building-cp.png"
+                            data-previews="smart-building.bg.jfif|smart-building2.png|smart-building3.png|smart-building4.png|smart-building5.png|smart-buildingvid.mp4">
+                            <div class="project-preview"></div>
+                            <img class="cover-photo" src="html5up-forty/images/smart-building-cp.png" alt=""
+                                aria-hidden="true">
+                            <a href="html5up-forty/landing.html?project=smart-building" class="image"
+                                aria-label="Open smart building automation system project">
+                            </a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=smart-building" class="link">Smart
+                                        Building Automation System</a></h3>
+                                <p>Introductory group project.</p>
+                            </header>
+                        </article>
+
+                        <article data-cover="smart-house-cp.png"
+                            data-previews="smart-house2.png|smart-house3.png|smart-house4.png|smart-house5.png|smart-house6.png|smart-house8.png|smart-house9.jfif|smart-house10.jfif|smart-house11.jfif|smart-house12.jfif|smart-house13.jfif|smart-house16.png|smart-house17.png|smart-house18.png|smart-housevid.mp4|smart-housevid2.mp4|smart-housevid3.mp4|smart-housevid4.mp4">
+                            <div class="project-preview"></div>
+                            <img class="cover-photo" src="html5up-forty/images/smart-house-cp.png" alt=""
+                                aria-hidden="true">
+                            <a href="html5up-forty/landing.html?project=smart-house" class="image"
+                                aria-label="Open 3D printed smart house project">
+                            </a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=smart-house" class="link">3D Printed
+                                        Smart House</a></h3>
+                                <p>Introductory group project.</p>
+                            </header>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="training" class="portfolio-section" aria-labelledby="training-title">
+                <div class="inner">
+                    <p class="section-kicker">Practical exposure</p>
+                    <h2 id="training-title">Technical Training &amp; Practice</h2>
+                    <p class="section-lede">
+                        TESDA NC II practice and a June–July 2025 Hytec Power Inc. internship.
+                        These are guided and introductory experiences, not claims of independent industrial
+                        commissioning.
+                    </p>
+                    <div class="training-facts">
+                        <article>
+                            <span class="skill-level">TESDA Mechatronics Servicing NC II</span>
+                            <h3>FluidSIM &amp; circuit practice</h3>
+                            <p>Designed and interpreted FESTO FluidSIM schematics, then practiced translating diagrams
+                                into physical circuit connections. Progressed from instructor assistance to assembling
+                                and wiring circuits independently.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">TESDA Mechatronics Servicing NC II</span>
+                            <h3>Components &amp; basic troubleshooting</h3>
+                            <p>Worked with motors, sensors, actuators, indicator lights, and NO/NC contacts. Practiced
+                                basic checks of the power supply, PLC indicators, wiring, sensors, and actuators.
+                                Connected PLC hardware with a program already loaded; these wiring exercises did not
+                                involve independently programming the PLC.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Technical &amp; Marketing Engineering Intern · June–July
+                                2025</span>
+                            <h3>Hytec Power Inc. · PLC training</h3>
+                            <p>Practiced Mitsubishi PLC programming in GX Works2 with instructor guidance. FX-TRN
+                                exercises covered lights, sensors, actuators, car detection, and pedestrian
+                                traffic-light scenarios.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Technical &amp; Marketing Engineering Intern · June–July
+                                2025</span>
+                            <h3>Team exercises &amp; product research</h3>
+                            <p>Participated in team conveyor/stamping-station programming, wiring, operation, and
+                                troubleshooting attempts; completion is not claimed. Also took part in smart-home
+                                simulation wiring, product research, and promotional slogan/material contributions.</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="training.html" class="button">View Training Media &amp; Schematics</a></li>
+                        <li><a href="certificates.html" class="button">View Certificates</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills" class="portfolio-section" aria-labelledby="skills-title">
+                <div class="inner">
+                    <p class="section-kicker">Current capabilities</p>
+                    <h2 id="skills-title">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <article>
+                            <span class="skill-level">Guided practice · foundational knowledge</span>
+                            <h3>Automation &amp; PLCs</h3>
+                            <p>Mitsubishi GX Works2 and FX-TRN exposure, foundational ladder logic, PLC inputs/outputs,
+                                and sensor-triggered actions. PLC programming practice was instructor-guided.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">TESDA practical training</span>
+                            <h3>Electrical Controls &amp; Troubleshooting</h3>
+                            <p>FESTO FluidSIM schematic interpretation, circuit wiring, and basic troubleshooting of
+                                power, PLC indicators, wiring, sensors, and actuators.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Training &amp; project exposure</span>
+                            <h3>Mechatronics &amp; Electrical Integration</h3>
+                            <p>Motors, sensors, actuators, indicator lights, NO/NC contacts, Arduino/ESP32 project
+                                exposure, and MeArm assembly. Microcontroller code was heavily AI-assisted; independent
+                                programming proficiency is not claimed.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Practical experience</span>
+                            <h3>Mechanical Design &amp; Prototyping</h3>
+                            <p>Blender freelance chassis modeling; component placement and clearance considerations; STL
+                                export and 3MF print-file preparation.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Currently learning</span>
+                            <h3>CAD, Programming &amp; Computing</h3>
+                            <p>Developing SolidWorks skills through tutorials and practice; learning Python. Java and
+                                HTML/CSS are foundational academic skills. No expert or advanced programming proficiency
+                                claimed.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="portfolio-section" aria-labelledby="education-title">
+                <div class="inner">
+                    <p class="section-kicker">Education &amp; credentials</p>
+                    <h2 id="education-title">Education &amp; Certification</h2>
+                    <div class="training-facts">
+                        <article>
+                            <span class="skill-level">Bachelor’s degree</span>
+                            <h3>Bachelor of Mechatronics Engineering</h3>
+                            <p>Saint Louis University. Graduation date not listed.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">TESDA National Certificate II</span>
+                            <h3>Mechatronics Servicing NC II</h3>
+                            <p>Certificate scan available in the <a class="text-link"
+                                    href="certificates.html">certificates gallery</a>. No certificate number or date is
+                                stated here.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section id="about" class="portfolio-section">
+                <div class="inner">
+                    <header class="major">
+                        <h2>About Me</h2>
+                    </header>
+
+                    <div class="about-grid">
+                        <div>
+                            <p>
+                                I’m a fresh Mechatronics Engineering graduate from Saint Louis University.
+                                I’m most interested in mechanical design and creating physical things, and
+                                I’m curious about how mechanical components work with sensors, actuators,
+                                electrical controls, and automation.
+                            </p>
+                            <p>
+                                My freelance work includes Blender chassis modeling and preparing files
+                                for 3D printing. I also hold TESDA Mechatronics Servicing NC II and have
+                                guided Mitsubishi PLC training through my internship. I’m continuing to
+                                develop my SolidWorks, PLC, and Python skills and welcome hands-on learning.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3>Explore</h3>
+                            <p>Review my <a class="text-link" href="#projects">project contributions</a>, <a
+                                    class="text-link" href="#training">technical training</a>, <a class="text-link"
+                                    href="#skills">current skills</a>, and <a class="text-link"
+                                    href="#education">education</a>.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Contact -->
+        <section id="contact">
+            <div class="inner">
+                <section>
+                    <header class="major">
+                        <h2>Let's Connect</h2>
+                    </header>
+                    <p>
+                        Interested in my projects or looking to connect about engineering,
+                        automation, or technical opportunities? Feel free to reach out.
+                    </p>
+                    <ul class="actions">
+                        <li>
+                            <a href="mailto:jibrilpaddil@gmail.com" class="button primary">
+                                Email Me
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/jibril-paddil-b4381a3a6/" target="_blank"
+                                rel="noopener" class="button">
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li><a href="https://github.com/JPBweb/Project-Univ" target="_blank" rel="noopener"
+                                class="button">GitHub repository</a></li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="copyright">
+                    <li>&copy; 2026 Jibril Paddil</li>
+                </ul>
+            </div>
+        </footer>
 
     </div>
 
-    <!-- Contact -->
-    <section id="contact">
-        <div class="inner">
-            <section>
-                <header class="major">
-                    <h2>Let's Connect</h2>
-                </header>
-                <p>
-                    Interested in my projects or looking to connect about engineering,
-                    automation, or technical opportunities? Feel free to reach out.
-                </p>
-                <ul class="actions">
-                    <li>
-                        <a href="mailto:jibrilpaddil@gmail.com" class="button primary">
-                            Email Me
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/jibril-paddil-b4381a3a6/" target="_blank" rel="noopener" class="button">
-                            LinkedIn
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://pin.it/395HIx8EL" target="_blank" rel="noopener" class="button">
-                            Pinterest
-                        </a>
-                    </li>
-                </ul>
-            </section>
-        </div>
-    </section>
+    <script src="html5up-forty/assets/js/jquery.min.js"></script>
+    <script src="html5up-forty/assets/js/jquery.scrolly.min.js"></script>
+    <script src="html5up-forty/assets/js/jquery.scrollex.min.js"></script>
+    <script src="html5up-forty/assets/js/browser.min.js"></script>
+    <script src="html5up-forty/assets/js/breakpoints.min.js"></script>
+    <script src="html5up-forty/assets/js/util.js"></script>
+    <script src="html5up-forty/assets/js/main.js"></script>
+    <script>
+        (function () {
+            const resumeUrl = '';
+            const container = document.getElementById('resume-action');
+            if (!resumeUrl || !container) return;
 
-    <!-- Footer -->
-    <footer id="footer">
-        <div class="inner">
-            <ul class="icons">
-                <li>
-                    <a href="mailto:jibrilpaddil@gmail.com" class="icon solid alt fa-envelope">
-                        <span class="label">Email</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com/in/jibril-paddil-b4381a3a6/" target="_blank" rel="noopener"
-                       class="icon brands alt fa-linkedin-in">
-                        <span class="label">LinkedIn</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://pin.it/395HIx8EL" target="_blank" rel="noopener"
-                       class="icon brands alt fa-pinterest-p">
-                        <span class="label">Pinterest</span>
-                    </a>
-                </li>
-            </ul>
+            const link = document.createElement('a');
+            link.className = 'button';
+            link.href = resumeUrl;
+            link.textContent = 'Download Resume';
+            link.setAttribute('download', '');
+            container.appendChild(link);
+        })();
+    </script>
 
-            <ul class="copyright">
-                <li>&copy; 2026 Jibril Paddil</li>
-                <li>Based on <a href="https://html5up.net/forty">Forty by HTML5 UP</a></li>
-            </ul>
-        </div>
-    </footer>
+    <script>
+        (function () {
+            const projects = document.querySelector('#projects.tiles');
+            if (!projects) return;
 
-</div>
+            const track = projects.querySelector('.projects-track');
+            if (!track) return;
 
-<script src="html5up-forty/assets/js/jquery.min.js"></script>
-<script src="html5up-forty/assets/js/jquery.scrolly.min.js"></script>
-<script src="html5up-forty/assets/js/jquery.scrollex.min.js"></script>
-<script src="html5up-forty/assets/js/browser.min.js"></script>
-<script src="html5up-forty/assets/js/breakpoints.min.js"></script>
-<script src="html5up-forty/assets/js/util.js"></script>
-<script src="html5up-forty/assets/js/main.js"></script>
+            const viewport = projects.querySelector('.projects-viewport');
+            if (!viewport) return;
 
-<script>
-(function () {
-    const projects = document.querySelector('#projects.tiles');
-    if (!projects) return;
+            const originals = Array.from(track.querySelectorAll('article'));
+            if (!originals.length) return;
 
-    const track = projects.querySelector('.projects-track');
-    if (!track) return;
+            const previousButton = document.querySelector('#projects-prev');
+            const nextButton = document.querySelector('#projects-next');
 
-    const viewport = projects.querySelector('.projects-viewport');
-    if (!viewport) return;
+            const imageExt = /\.(png|jpe?g|jfif|webp|gif|avif)$/i;
+            const base = 'html5up-forty/images/';
 
-    const originals = Array.from(track.querySelectorAll('article'));
-    if (!originals.length) return;
-
-    const previousButton = document.querySelector('#projects-prev');
-    const nextButton = document.querySelector('#projects-next');
-
-    const imageExt = /\.(png|jpe?g|jfif|webp|gif|avif)$/i;
-    const videoExt = /\.(mp4|webm|ogg)$/i;
-    const base = 'html5up-forty/images/';
-
-    function isAsset(name) {
-        return imageExt.test(name) || videoExt.test(name);
-    }
-
-    function makeUrl(name) {
-        return base + name.trim();
-    }
-
-    function setCover(card) {
-        const cover = card.querySelector('.cover-photo');
-        if (!cover) return;
-
-        const coverName = (card.dataset.cover || '').trim();
-        if (coverName) cover.src = makeUrl(coverName);
-
-        /* If the CP file is unavailable, fall back to the existing project background. */
-        cover.addEventListener('error', () => {
-            const fallback = (card.dataset.previews || '').split('|').find(name => imageExt.test(name.trim()));
-            if (fallback && cover.dataset.fallback !== fallback) {
-                cover.dataset.fallback = fallback;
-                cover.src = makeUrl(fallback);
+            function isAsset(name) {
+                return imageExt.test(name);
             }
-        }, { once: true });
-    }
 
-    function setupPreview(card) {
-        const layer = card.querySelector('.project-preview');
-        if (!layer) return;
-
-        /* Clear cloned preview elements so each card gets exactly one preview sequence. */
-        layer.innerHTML = '';
-
-        const names = (card.dataset.previews || '')
-            .split('|')
-            .map(name => name.trim())
-            .filter(Boolean)
-            .filter(isAsset);
-
-        if (!names.length) return;
-
-        const items = [];
-
-        names.forEach(name => {
-            let item;
-
-            if (videoExt.test(name)) {
-                item = document.createElement('video');
-                item.muted = true;
-                item.playsInline = true;
-                item.preload = 'none';
-                item.dataset.src = makeUrl(name);
-                item.setAttribute('aria-hidden', 'true');
-            } else {
-                item = document.createElement('img');
-                item.alt = '';
-                item.setAttribute('aria-hidden', 'true');
-                item.src = makeUrl(name);
+            function makeUrl(name) {
+                return base + name.trim();
             }
-            item.addEventListener('error', () => {
-                item.remove();
-                const index = items.indexOf(item);
-                if (index !== -1) items.splice(index, 1);
-            });
 
-            layer.appendChild(item);
-            items.push(item);
-        });
+            function setCover(card) {
+                const cover = card.querySelector('.cover-photo');
+                if (!cover) return;
 
-        if (!items.length) return;
+                const coverName = (card.dataset.cover || '').trim();
+                if (coverName) cover.src = makeUrl(coverName);
 
-        let current = 0;
-
-        function show(index) {
-            if (!items.length) return;
-            current = ((index % items.length) + items.length) % items.length;
-
-            items.forEach((item, i) => {
-                item.classList.toggle('active', i === current);
-                if (item.tagName === 'VIDEO') {
-                    if (i === current) {
-                        if (!item.src) {
-                            item.src = item.dataset.src;
-                            item.load();
-                        }
-                        item.currentTime = 0;
-                        item.play().catch(() => {});
-                    } else {
-                        item.pause();
+                /* If the CP file is unavailable, fall back to the existing project background. */
+                cover.addEventListener('error', () => {
+                    const fallback = (card.dataset.previews || '').split('|').find(name => imageExt.test(name.trim()));
+                    if (fallback && cover.dataset.fallback !== fallback.trim()) {
+                        cover.dataset.fallback = fallback.trim();
+                        cover.src = makeUrl(fallback);
                     }
-                }
-            });
-        }
-
-        show(0);
-        if (items.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            window.setInterval(() => show(current + 1), 3200);
-        }
-
-        card.addEventListener('click', function (event) {
-            if (event.target.closest('button, video')) return;
-
-            const link = card.querySelector('a.image[href*="landing.html"]') ||
-                         card.querySelector('a[href*="landing.html"]');
-
-            if (!link || !link.href) return;
-
-            event.preventDefault();
-            window.location.href = link.href;
-        });
-    }
-
-    function fitCardText(card) {
-        const header = card.querySelector('header.major');
-        if (!header) return;
-        card.classList.toggle('has-long-content', header.scrollHeight > header.clientHeight);
-    }
-
-    /* Set up the five original cards first. */
-    originals.forEach(card => {
-    setCover(card);
-    setupPreview(card);
-    fitCardText(card);
-
-    card.style.cursor = 'pointer';
-});
-
-    const getScrollStep = () => {
-        const card = track.querySelector('article');
-        if (!card) return 360;
-        const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
-        return card.getBoundingClientRect().width + gap;
-    };
-
-    const updateControls = () => {
-        const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-        if (previousButton) previousButton.disabled = viewport.scrollLeft <= 1;
-        if (nextButton) nextButton.disabled = viewport.scrollLeft >= maxScroll - 1;
-    };
-
-    const moveProjects = direction => {
-        const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-        const target = Math.min(maxScroll, Math.max(0, viewport.scrollLeft + direction * getScrollStep()));
-        viewport.scrollTo({ left: target, behavior: 'smooth' });
-    };
-
-    previousButton?.addEventListener('click', () => moveProjects(-1));
-    nextButton?.addEventListener('click', () => moveProjects(1));
-    viewport.addEventListener('scroll', updateControls, { passive: true });
-    window.addEventListener('resize', () => {
-        updateControls();
-        originals.forEach(fitCardText);
-    });
-    updateControls();
-
-    let dragging = false;
-    let dragStartX = 0;
-    let dragStartScroll = 0;
-    let dragMoved = false;
-    const DRAG_THRESHOLD = 8;
-
-    viewport.addEventListener('pointerdown', event => {
-        if (event.pointerType !== 'mouse' || event.button !== 0) return;
-        dragging = true;
-        dragMoved = false;
-        dragStartX = event.clientX;
-        dragStartScroll = viewport.scrollLeft;
-    });
-
-    viewport.addEventListener('pointermove', event => {
-        if (!dragging) return;
-        const dx = event.clientX - dragStartX;
-        if (!dragMoved && Math.abs(dx) < DRAG_THRESHOLD) return;
-        if (!dragMoved) {
-            dragMoved = true;
-            viewport.classList.add('is-dragging');
-            viewport.setPointerCapture?.(event.pointerId);
-        }
-        viewport.scrollLeft = dragStartScroll - dx;
-    });
-
-    function stopDragging(event) {
-        if (!dragging) return;
-        dragging = false;
-        viewport.classList.remove('is-dragging');
-        if (dragMoved) {
-            viewport.releasePointerCapture?.(event.pointerId);
-        }
-    }
-
-    viewport.addEventListener('pointerup', stopDragging);
-    viewport.addEventListener('pointercancel', stopDragging);
-
-})();
-
-/* Make the two hero buttons always work, even after back-navigation */
-(function () {
-    const projectsBtn = document.getElementById('btn-view-projects');
-    const certificatesBtn = document.getElementById('btn-view-certificates');
-
-    if (projectsBtn) {
-        projectsBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.getElementById('projects');
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                window.location.hash = 'projects';
+                }, { once: true });
             }
-        });
-    }
 
-    if (certificatesBtn) {
-        certificatesBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.location.href = 'certificates.html';
-        });
-    }
-})();
-</script>
-<script>
-(function () {
-    function setupHeroButtons() {
-        const projectsBtn = document.getElementById('btn-view-projects');
-        const certificatesBtn = document.getElementById('btn-view-certificates');
+            function setupPreview(card) {
+                const layer = card.querySelector('.project-preview');
+                if (!layer) return;
 
-        if (projectsBtn) {
-            projectsBtn.onclick = function (e) {
-                e.preventDefault();
-                const target = document.getElementById('projects');
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    window.location.hash = 'projects';
+                /* Clear cloned preview elements so each card gets exactly one preview sequence. */
+                layer.innerHTML = '';
+
+                const names = (card.dataset.previews || '')
+                    .split('|')
+                    .map(name => name.trim())
+                    .filter(Boolean)
+                    .filter(isAsset);
+
+                if (!names.length) {
+                    const empty = document.createElement('span');
+                    empty.className = 'project-preview-empty';
+                    empty.setAttribute('role', 'note');
+                    empty.textContent = card.dataset.emptyState || 'Project media not supplied yet.';
+                    layer.appendChild(empty);
+                    return;
                 }
+
+                const items = [];
+
+                names.forEach(name => {
+                    const item = document.createElement('img');
+                    item.alt = '';
+                    item.setAttribute('aria-hidden', 'true');
+                    item.src = makeUrl(name);
+                    item.addEventListener('error', () => {
+                        item.remove();
+                        const index = items.indexOf(item);
+                        if (index !== -1) items.splice(index, 1);
+                    });
+
+                    layer.appendChild(item);
+                    items.push(item);
+                });
+
+                if (!items.length) return;
+
+                let current = 0;
+
+                function show(index) {
+                    if (!items.length) return;
+                    current = ((index % items.length) + items.length) % items.length;
+
+                    items.forEach((item, i) => {
+                        item.classList.toggle('active', i === current);
+                    });
+                }
+
+                show(0);
+                if (items.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    window.setInterval(() => show(current + 1), 3200);
+                }
+
+                card.addEventListener('click', function (event) {
+                    if (event.target.closest('button, video')) return;
+
+                    const link = card.querySelector('a.image[href*="landing.html"]') ||
+                        card.querySelector('a[href*="landing.html"]');
+
+                    if (!link || !link.href) return;
+
+                    event.preventDefault();
+                    window.location.href = link.href;
+                });
+            }
+
+            function fitCardText(card) {
+                const header = card.querySelector('header.major');
+                if (!header) return;
+                card.classList.toggle('has-long-content', header.scrollHeight > header.clientHeight);
+            }
+
+            /* Set up each project card. */
+            originals.forEach(card => {
+                setCover(card);
+                setupPreview(card);
+                fitCardText(card);
+
+                card.style.cursor = 'pointer';
+            });
+
+            const getScrollStep = () => {
+                const card = track.querySelector('article');
+                if (!card) return 360;
+                const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+                return card.getBoundingClientRect().width + gap;
             };
-        }
 
-        if (certificatesBtn) {
-            certificatesBtn.onclick = function (e) {
-                e.preventDefault();
-                window.location.href = 'certificates.html';
+            const updateControls = () => {
+                const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+                if (previousButton) previousButton.disabled = viewport.scrollLeft <= 1;
+                if (nextButton) nextButton.disabled = viewport.scrollLeft >= maxScroll - 1;
             };
-        }
-    }
 
-    // Run on first load
-    setupHeroButtons();
+            const moveProjects = direction => {
+                const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
+                const target = Math.min(maxScroll, Math.max(0, viewport.scrollLeft + direction * getScrollStep()));
+                viewport.scrollTo({ left: target, behavior: 'smooth' });
+            };
 
-    // Run again when you come back with the browser Back button
-    window.addEventListener('pageshow', setupHeroButtons);
-})();
-</script>
+            previousButton?.addEventListener('click', () => moveProjects(-1));
+            nextButton?.addEventListener('click', () => moveProjects(1));
+            viewport.addEventListener('scroll', updateControls, { passive: true });
+            window.addEventListener('resize', () => {
+                updateControls();
+                originals.forEach(fitCardText);
+            });
+            updateControls();
 
+            let dragging = false;
+            let dragStartX = 0;
+            let dragStartScroll = 0;
+            let dragMoved = false;
+            const DRAG_THRESHOLD = 8;
 
+            viewport.addEventListener('pointerdown', event => {
+                if (event.pointerType !== 'mouse' || event.button !== 0) return;
+                dragging = true;
+                dragMoved = false;
+                dragStartX = event.clientX;
+                dragStartScroll = viewport.scrollLeft;
+            });
 
+            viewport.addEventListener('pointermove', event => {
+                if (!dragging) return;
+                const dx = event.clientX - dragStartX;
+                if (!dragMoved && Math.abs(dx) < DRAG_THRESHOLD) return;
+                if (!dragMoved) {
+                    dragMoved = true;
+                    viewport.classList.add('is-dragging');
+                    viewport.setPointerCapture?.(event.pointerId);
+                }
+                viewport.scrollLeft = dragStartScroll - dx;
+            });
+
+            function stopDragging(event) {
+                if (!dragging) return;
+                dragging = false;
+                viewport.classList.remove('is-dragging');
+                if (dragMoved) {
+                    viewport.releasePointerCapture?.(event.pointerId);
+                }
+            }
+
+            viewport.addEventListener('pointerup', stopDragging);
+            viewport.addEventListener('pointercancel', stopDragging);
+
+        })();
+
+    </script>
 </body>
+
 </html>

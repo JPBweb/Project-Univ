@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Documented technical training and an editable local-media gallery for Jibril Paddil.">
+    <title>Technical Training &amp; Practice | Jibril Paddil</title>
+    <link rel="stylesheet" href="html5up-forty/assets/css/main.css">
+    <link rel="stylesheet" href="portfolio.css">
+    <style>
+        .training-page { padding: 7rem 1.25rem 4rem; }
+        .training-inner { width: min(100%, 1120px); margin: 0 auto; }
+        .training-nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+        .training-intro { max-width: 760px; margin-bottom: 2.5rem; color: #c4cbd1; line-height: 1.75; }
+        .training-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; }
+        .training-card { padding: 1.25rem; border: 1px solid #343b40; background: #191e22; }
+        .training-card h2 { margin: .2rem 0 .75rem; font-size: 1.2rem; }
+        .training-card p { color: #c4cbd1; line-height: 1.65; }
+        .training-card dl { display: grid; grid-template-columns: minmax(7rem, .7fr) 1.3fr; gap: .45rem .8rem; margin: 1rem 0; }
+        .training-card dt { font-weight: 700; }
+        .training-card dd { margin: 0; color: #c4cbd1; }
+        .training-card video { display: block; width: 100%; max-height: 32rem; margin-top: 1rem; background: #080a0b; }
+        .training-empty { padding: 1rem; border-left: 3px solid #d5c68a; background: #202529; color: #c4cbd1; }
+        .training-card img { display: block; max-width: 100%; max-height: 28rem; margin: 1rem auto; cursor: zoom-in; }
+        .diagram-dialog { width: min(96vw, 1200px); max-width: none; max-height: 92vh; padding: 1rem; border: 1px solid #657278; background: #111518; color: #f1f3f4; }
+        .diagram-dialog::backdrop { background: rgb(0 0 0 / .85); }
+        .diagram-dialog img { display: block; max-width: 100%; max-height: 78vh; margin: 1rem auto; object-fit: contain; }
+        .training-footnote { margin-top: 2rem; color: #c4cbd1; font-size: .9rem; }
+        @media (max-width: 560px) {
+            .training-page { padding-top: 5.5rem; }
+            .training-card dl { grid-template-columns: 1fr; gap: .15rem; }
+            .training-card dd { margin-bottom: .6rem; }
+        }
+    </style>
+</head>
+<body>
+<main class="training-page">
+    <div class="training-inner">
+        <nav class="training-nav" aria-label="Page navigation">
+            <a class="button small" href="index.html">Home</a>
+            <a class="button small" href="index.html#projects">Projects</a>
+            <a class="button small" href="certificates.html">Certificates</a>
+        </nav>
+        <header>
+            <p class="section-kicker">Documented practice</p>
+            <h1>Technical Training &amp; Engineering Practice</h1>
+            <p class="training-intro">
+                The entries below describe my TESDA Mechatronics Servicing NC II practical training
+                and my Technical and Marketing Engineering internship at Hytec Power Inc. in
+                June–July 2025. Training activities are distinguished from independent work;
+                no video, photo, or schematic is shown until I add the original media.
+            </p>
+        </header>
+        <div id="training-grid" class="training-grid" aria-live="polite"></div>
+        <p class="training-footnote">
+            Media is loaded from <code>training-media/videos/</code>,
+            <code>training-media/photos/</code>, and <code>training-media/diagrams/</code>.
+            Keep individual video files reasonably sized before adding them to the site.
+        </p>
+    </div>
+</main>
+
+<dialog class="diagram-dialog" id="diagram-dialog" aria-label="Expanded training image">
+    <form method="dialog"><button class="button small" aria-label="Close expanded diagram">Close</button></form>
+</dialog>
+
+<script>
+(function () {
+    const entries = [
+        {
+            type: 'video',
+            title: 'TESDA NC II · FluidSIM schematic interpretation',
+            summary: 'Practical Mechatronics Servicing NC II training using FESTO FluidSIM.',
+            equipment: 'FESTO FluidSIM schematic-design and simulation software.',
+            performed: 'Designed and interpreted schematics, then translated diagrams into physical circuits. Progressed from instructor assistance to independent circuit wiring.',
+            skills: 'Schematic interpretation and circuit wiring.',
+            src: ''
+        },
+        {
+            type: 'video',
+            title: 'TESDA NC II · Circuit components & troubleshooting',
+            summary: 'Hands-on circuit exercises using common mechatronics components.',
+            equipment: 'Motors, sensors, actuators, indicator lights, NO/NC contacts, power supply, and PLC hardware.',
+            performed: 'Wired circuits and practiced basic checks of the power supply, PLC indicators, wiring, sensors, and actuators. Connected PLC hardware with a program already loaded; independent PLC programming is not claimed for these exercises.',
+            skills: 'Component identification, wiring, and basic troubleshooting.',
+            src: ''
+        },
+        {
+            type: 'video',
+            title: 'Hytec Power Inc. · Guided Mitsubishi PLC practice',
+            summary: 'Technical and Marketing Engineering internship, June–July 2025.',
+            equipment: 'Mitsubishi PLC, GX Works2, and FX-TRN training exercises.',
+            performed: 'Practiced PLC programming with instructor guidance. FX-TRN exercises covered lights, sensors, actuators, car detection, and pedestrian traffic-light scenarios.',
+            skills: 'Guided Mitsubishi PLC and GX Works2 programming practice.',
+            src: ''
+        },
+        {
+            type: 'video',
+            title: 'Hytec Power Inc. · Team and smart-home exercises',
+            summary: 'Additional internship activities, June–July 2025.',
+            equipment: 'Conveyor and stamping-station training setup; smart-home simulation wiring.',
+            performed: 'Participated in team attempts at programming, wiring, operating, and troubleshooting the conveyor/stamping exercise; successful commissioning is not claimed. Also took part in smart-home simulation wiring, product research, and promotional slogan/material contributions.',
+            skills: 'Team-based controls practice, wiring, product research, and promotional content.',
+            src: ''
+        }
+    ];
+
+    const grid = document.getElementById('training-grid');
+    const diagramDialog = document.getElementById('diagram-dialog');
+    let largeDiagram;
+    const githubMediaBase = 'https://media.githubusercontent.com/media/JPBweb/Project-Univ/main/';
+    const videoObserver = 'IntersectionObserver' in window
+        ? new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                entry.target.preload = 'metadata';
+                entry.target.load();
+                observer.unobserve(entry.target);
+            });
+        }, { rootMargin: '300px 0px' })
+        : null;
+
+    function addDetail(list, label, value) {
+        if (!value) return;
+        const term = document.createElement('dt');
+        term.textContent = label;
+        const description = document.createElement('dd');
+        description.textContent = value;
+        list.append(term, description);
+    }
+
+    function showTrainingImage(image) {
+        if (!largeDiagram) {
+            largeDiagram = document.createElement('img');
+            diagramDialog.appendChild(largeDiagram);
+        }
+        largeDiagram.src = image.src;
+        largeDiagram.alt = image.alt;
+        diagramDialog.showModal();
+    }
+
+    entries.forEach(function (entry) {
+        const card = document.createElement('article');
+        card.className = 'training-card';
+
+        const heading = document.createElement('h2');
+        heading.textContent = entry.title;
+        card.appendChild(heading);
+
+        const summary = document.createElement('p');
+        summary.textContent = entry.summary;
+        card.appendChild(summary);
+
+        const details = document.createElement('dl');
+        if (entry.type === 'video') {
+            addDetail(details, 'Equipment', entry.equipment);
+            addDetail(details, 'My role', entry.performed);
+            addDetail(details, 'Skills practiced', entry.skills);
+            card.appendChild(details);
+
+            if (entry.src && /^training-media\/videos\/[^/\\]+\.(mp4|webm|ogg)$/i.test(entry.src)) {
+                const video = document.createElement('video');
+                video.controls = true;
+                video.preload = 'none';
+                video.playsInline = true;
+                video.setAttribute('aria-label', entry.title + ' training video');
+                const source = document.createElement('source');
+                source.src = location.protocol !== 'file:' && /\.mp4$/i.test(entry.src)
+                    ? githubMediaBase + entry.src
+                    : entry.src;
+                source.type = /\.webm$/i.test(entry.src) ? 'video/webm' : /\.ogg$/i.test(entry.src) ? 'video/ogg' : 'video/mp4';
+                video.appendChild(source);
+                video.append('Your browser does not support HTML video.');
+                card.appendChild(video);
+                if (videoObserver) videoObserver.observe(video);
+                else video.preload = 'metadata';
+            } else {
+                const empty = document.createElement('p');
+                empty.className = 'training-empty';
+                empty.textContent = 'No video is available for this activity.';
+                card.appendChild(empty);
+            }
+        } else if (entry.type === 'schematic') {
+            addDetail(details, 'Diagram type', entry.diagramType);
+            addDetail(details, 'Components', entry.components);
+            addDetail(details, 'Operation', entry.explanation);
+            card.appendChild(details);
+
+            if (entry.imageSrc && /^training-media\/diagrams\/[^/\\]+\.(png|jpe?g|webp)$/i.test(entry.imageSrc)) {
+                const image = document.createElement('img');
+                image.src = entry.imageSrc;
+                image.alt = entry.title + ' schematic';
+                image.loading = 'lazy';
+                image.tabIndex = 0;
+                image.setAttribute('role', 'button');
+                image.setAttribute('aria-label', 'Enlarge ' + entry.title);
+                image.addEventListener('click', function () {
+                    showTrainingImage(image);
+                });
+                image.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        image.click();
+                    }
+                });
+                card.appendChild(image);
+
+                if (entry.downloadSrc && /^training-media\/diagrams\/[^/\\]+\.(png|jpe?g|webp|pdf)$/i.test(entry.downloadSrc)) {
+                    const download = document.createElement('a');
+                    download.href = entry.downloadSrc;
+                    download.textContent = 'Open original diagram';
+                    download.target = '_blank';
+                    download.rel = 'noopener';
+                    card.appendChild(download);
+                }
+            } else {
+                const empty = document.createElement('p');
+                empty.className = 'training-empty';
+                empty.textContent = 'No diagram is available for this activity.';
+                card.appendChild(empty);
+            }
+        } else if (entry.type === 'photo') {
+            if (entry.src && entry.alt &&
+                /^training-media\/photos\/[^/\\]+\.(jpe?g|webp)$/i.test(entry.src)) {
+                const image = document.createElement('img');
+                image.src = entry.src;
+                image.alt = entry.alt;
+                image.loading = 'lazy';
+                image.tabIndex = 0;
+                image.setAttribute('role', 'button');
+                image.setAttribute('aria-label', 'Enlarge ' + entry.alt);
+                image.addEventListener('click', function () {
+                    showTrainingImage(image);
+                });
+                image.addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        image.click();
+                    }
+                });
+                card.appendChild(image);
+            } else {
+                const empty = document.createElement('p');
+                empty.className = 'training-empty';
+                empty.textContent = 'No photo is available for this activity.';
+                card.appendChild(empty);
+            }
+        }
+
+        grid.appendChild(card);
+    });
+
+    diagramDialog.addEventListener('close', function () {
+        if (largeDiagram) {
+            largeDiagram.remove();
+            largeDiagram = null;
+        }
+    });
+})();
+</script>
+</body>
+</html>

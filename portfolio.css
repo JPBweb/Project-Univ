@@ -1,0 +1,342 @@
+:root {
+    color-scheme: dark;
+    --portfolio-bg: #111518;
+    --portfolio-surface: #191e22;
+    --portfolio-line: #343b40;
+    --portfolio-text: #f1f3f4;
+    --portfolio-muted: #c4cbd1;
+    --portfolio-accent: #d5c68a;
+}
+
+html {
+    min-width: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
+body,
+#wrapper {
+    min-width: 0;
+    width: 100%;
+    background: var(--portfolio-bg) !important;
+    color: var(--portfolio-text);
+}
+
+body {
+    font-size: 1rem;
+}
+
+a {
+    text-underline-offset: .2em;
+}
+
+a:focus-visible,
+button:focus-visible,
+video:focus-visible,
+summary:focus-visible {
+    outline: 3px solid var(--portfolio-accent);
+    outline-offset: 3px;
+}
+
+.portfolio-nav a {
+    border-radius: 2px;
+}
+
+#banner {
+    min-height: min(92svh, 900px);
+}
+
+#banner .intro-name,
+#banner .intro-text h1 {
+    letter-spacing: .025em;
+    text-transform: none;
+}
+
+#banner > .inner .content p.hero-headline {
+    max-width: 880px;
+    margin: 0 auto .75rem;
+    font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 1.45;
+    text-transform: none;
+}
+
+#banner > .inner .content p.hero-summary {
+    max-width: 720px;
+    margin: 0 auto;
+    color: var(--portfolio-muted);
+    font-size: 1rem;
+    letter-spacing: normal;
+    line-height: 1.75;
+    text-transform: none;
+}
+
+#banner .profile-photo {
+    border-color: #87999b;
+    box-shadow: none;
+    animation: none;
+}
+
+#banner > .inner .content {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.hero-actions {
+    align-items: center;
+}
+
+#resume-action:empty {
+    display: none;
+}
+
+.hero-actions .button,
+.portfolio-nav a,
+.projects-controls .button {
+    border-radius: 2px;
+}
+
+.hero-actions .button:hover,
+.portfolio-nav a:hover,
+.projects-controls .button:hover {
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+#main,
+#projects,
+#projects.tiles {
+    background: var(--portfolio-bg) !important;
+}
+
+#projects.tiles {
+    padding: clamp(3rem, 7vw, 6rem) 0;
+    scroll-margin-top: 4rem;
+}
+
+.projects-heading {
+    width: min(100%, 1120px);
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 4rem) 1.25rem;
+}
+
+.projects-heading .section-kicker {
+    margin-bottom: .35rem;
+}
+
+.projects-heading h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.projects-viewport {
+    width: min(100%, 1200px);
+    margin: 0 auto;
+    overflow: visible;
+    cursor: default;
+}
+
+#projects.tiles .projects-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    width: auto;
+    padding: 1rem clamp(1.25rem, 5vw, 4rem);
+    gap: 1rem;
+}
+
+#projects.tiles article,
+#projects.tiles article:hover,
+#projects.tiles article.is-hovered {
+    width: 100%;
+    height: auto;
+    min-height: 25rem;
+    flex: initial;
+    border: 1px solid var(--portfolio-line);
+    border-radius: 2px;
+    background-color: var(--portfolio-surface);
+    transform: none;
+    box-shadow: none;
+}
+
+#projects.tiles article:hover {
+    border-color: #657278;
+}
+
+#projects.tiles article .cover-photo,
+#projects.tiles article .project-preview img,
+#projects.tiles article .project-preview video {
+    border-radius: 0;
+}
+
+#projects.tiles article .project-preview::after {
+    background: linear-gradient(180deg, transparent 15%, rgba(8, 11, 13, .85) 100%);
+    opacity: 1;
+}
+
+#projects.tiles article header.major {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 1.25rem;
+}
+
+#projects.tiles article header.major h3 {
+    width: auto;
+    max-width: 100%;
+    margin-bottom: .65rem;
+    font-size: 1.12rem;
+    overflow-wrap: anywhere;
+}
+
+#projects.tiles article header.major p {
+    width: auto;
+    max-width: 100%;
+    color: var(--portfolio-muted);
+    font-size: .88rem;
+    overflow-wrap: anywhere;
+}
+
+.projects-controls {
+    display: none;
+}
+
+#training,
+#skills,
+#about,
+#contact {
+    background: var(--portfolio-bg);
+}
+
+#training,
+#skills {
+    border-top: 1px solid var(--portfolio-line);
+}
+
+#training h2,
+#skills h2,
+#about h2,
+#contact h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+}
+
+#about .about-grid {
+    align-items: start;
+}
+
+#about p,
+#contact p {
+    color: var(--portfolio-muted);
+    line-height: 1.75;
+}
+
+#contact {
+    border-top: 1px solid var(--portfolio-line);
+}
+
+#contact .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    padding-left: 0;
+}
+
+#contact .actions li {
+    padding-left: 0;
+}
+
+#contact .actions .button {
+    min-width: 0;
+    white-space: normal;
+}
+
+.skills-grid article,
+.training-facts article,
+.case-study-grid article,
+.certificate-card {
+    border-radius: 2px;
+    background: var(--portfolio-surface);
+    border-color: var(--portfolio-line);
+}
+
+.certificate-card h2 {
+    line-height: 1.45;
+}
+
+.certificate-metadata {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: .25rem .75rem;
+    margin: .5rem 0 1rem;
+}
+
+.certificate-metadata dt {
+    font-weight: 700;
+}
+
+.certificate-metadata dd {
+    margin: 0;
+    color: var(--portfolio-muted);
+}
+
+.case-study-grid img {
+    display: block;
+    max-width: 100%;
+    max-height: 24rem;
+    margin-top: 1rem;
+    cursor: zoom-in;
+}
+
+.portfolio-section .text-link,
+.portfolio-section .skill-level,
+.portfolio-section .section-kicker,
+.portfolio-section .item-kicker {
+    color: var(--portfolio-accent);
+}
+
+.portfolio-section .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    padding-left: 0;
+}
+
+.portfolio-section .actions li {
+    padding-left: 0;
+}
+
+.portfolio-section .actions .button {
+    min-width: 0;
+    white-space: normal;
+}
+
+@media (max-width: 736px) {
+    .portfolio-nav {
+        justify-content: center;
+        overflow: visible;
+    }
+
+    #projects.tiles .projects-track {
+        grid-template-columns: 1fr;
+    }
+
+    #projects.tiles article,
+    #projects.tiles article:hover,
+    #projects.tiles article.is-hovered {
+        min-height: 22rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
