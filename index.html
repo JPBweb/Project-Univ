@@ -13,15 +13,6 @@
     </noscript>
 
     <style>
-        body,
-        #wrapper {
-            background:
-                linear-gradient(rgba(10, 14, 20, 0.55),
-                    rgba(10, 14, 20, 0.75)),
-                #0a0e14 url("html5up-forty/images/front-photo-background.jpg") center top / cover no-repeat fixed;
-            background-color: #0a0e14;
-        }
-
         #header {
             background: #3a38387e !important;
         }
@@ -56,27 +47,27 @@
             z-index: 1;
         }
 
-        /* Optional: make the whole page body black too for consistency */
-        body {
-            background: #0e0d0d !important;
-        }
-
         /* Portfolio-specific additions while keeping the Forty template */
-        #banner {
+        #banner.major {
             min-height: 100vh;
             min-height: 100svh;
+            height: auto;
+            max-height: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 6rem 2rem 4rem;
+            padding: 7rem 2rem 4rem;
             box-sizing: border-box;
             position: relative;
+            top: 0;
+            margin-bottom: 0;
             isolation: isolate;
             overflow: hidden;
             z-index: 2;
             background-attachment: scroll;
-            background: transparent !important;
-
+            background:
+                linear-gradient(rgba(10, 14, 20, 0.55), rgba(10, 14, 20, 0.75)),
+                url("html5up-forty/images/front-photo-background.jpg") center center / cover no-repeat !important;
         }
 
         #banner::before,
@@ -758,13 +749,13 @@
         }
 
         @media screen and (max-width: 736px) {
-            #banner {
+            #banner.major {
                 min-height: 100svh;
-                padding: 4.5rem 1.25rem 1.5rem;
+                padding: 7rem 1.25rem 2rem;
             }
 
             .profile-wrap {
-                margin: 1rem 0 .75rem;
+                margin: 0 0 .75rem;
             }
 
             .profile-photo {
@@ -837,8 +828,9 @@
         <header id="header" class="alt">
             <nav class="portfolio-nav" aria-label="Main navigation">
                 <a href="#banner">Home</a>
+                <a href="training.html#plc-experience">PLC Experience</a>
+                <a href="#training">Technical Experiences</a>
                 <a href="#projects">Projects</a>
-                <a href="#training">Training</a>
                 <a href="#skills">Skills</a>
                 <a href="#education">Education</a>
                 <a href="certificates.html">Certificates</a>
@@ -861,20 +853,26 @@
                         </header>
                         <div class="content">
                             <p class="hero-headline">
-                                Mechatronics Engineering Graduate | Mechanical Design, Prototyping &amp; Industrial
-                                Automation
+                                <span>Mechatronics Engineering Graduate | TESDA Mechatronics Servicing NC II</span>
+                                <span>Mechanical Design, Prototyping &amp; Industrial Automation</span>
                             </p>
                             <p class="hero-summary">
-                                I’m a Mechatronics Engineering graduate interested in mechanical design,
-                                prototyping, and industrial automation. I enjoy developing 3D models for
-                                physical applications and learning how mechanical components, sensors,
-                                actuators, and control systems work together. I’m developing my SolidWorks,
-                                PLC, and Python skills through practice and hands-on experience.
+                                I'm a Mechatronics Engineering graduate with a technical background in mechanical
+                                design,
+                                electrical systems, and industrial automation. I enjoy developing practical engineering
+                                solutions through 3D modeling, prototyping, and hands-on projects. My experience
+                                includes
+                                working with PLCs, sensors, actuators, motors, and electro-pneumatic systems. I'm
+                                continuously
+                                developing my skills in SolidWorks, PLC programming, and Python while expanding my
+                                knowledge of industrial equipment and automation.
                             </p>
                         </div>
                     </div>
 
                     <div class="hero-actions">
+                        <a href="#training" class="button next">PLC Experience</a>
+                        <a href="#skills" class="button next">Technical Experiences</a>
                         <a href="#projects" class="button next" id="btn-view-projects">View Projects</a>
                         <a href="#contact" class="button next">Contact Me</a>
                         <div id="resume-action" aria-live="polite"></div>
@@ -884,8 +882,99 @@
             </div>
         </section>
 
-        <!-- Projects -->
+        <!-- Portfolio sections -->
         <main id="main">
+
+            <section id="training" class="portfolio-section" aria-labelledby="training-title">
+                <div class="inner">
+                    <p class="section-kicker">Practical exposure</p>
+                    <h2 id="training-title">Technical Training &amp; Practice</h2>
+                    <p class="section-lede">
+                        TESDA NC II practice and a June–July 2025 Hytec Power Inc. internship.
+                        These are guided and introductory experiences, not claims of independent industrial
+                        commissioning.
+                    </p>
+                    <div class="training-facts">
+                        <article>
+                            <span class="skill-level">TESDA Mechatronics Servicing NC II</span>
+                            <h3>FluidSIM &amp; circuit practice</h3>
+                            <p>Used FESTO FluidSIM to create and study pneumatic and electrical circuit diagrams.
+                                I then built the circuits physically by following the diagrams, starting with
+                                guidance from our instructor before eventually doing the wiring on my own.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">TESDA Mechatronics Servicing NC II</span>
+                            <h3>Components &amp; basic troubleshooting</h3>
+                            <p>Worked with different mechatronics components, including motors, sensors,
+                                actuators, indicator lights, and NO/NC contacts. I also practiced checking
+                                power supplies, PLC indicators, wiring connections, and sensor and actuator operation.
+                                We connected PLC hardware to existing programs and tested the circuits.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Technical &amp; Marketing Engineering Intern · June–July
+                                2025</span>
+                            <h3>Hytec Power Inc. · PLC training</h3>
+                            <p>Practiced Mitsubishi PLC programming in GX Works2 with instructor guidance. FX-TRN
+                                exercises covered lights, sensors, actuators, car detection, and pedestrian
+                                traffic-light scenarios.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Technical &amp; Marketing Engineering Intern · June–July
+                                2025</span>
+                            <h3>Team exercises &amp; product research</h3>
+                            <p>Worked with other interns on conveyor and stamping station exercises, covering
+                                basic programming, wiring, and machine operation. We also worked on troubleshooting,
+                                although we weren't able to complete all the exercises. Other tasks included smart-home
+                                wiring simulations, product research, and preparing promotional materials.</p>
+                        </article>
+                    </div>
+                    <ul class="actions">
+                        <li><a href="training.html#plc-experience" class="button">PLC Experience</a></li>
+                        <li><a href="training.html#festo-diagrams" class="button">Electropneumatic Schematics</a></li>
+                        <li><a href="certificates.html" class="button">View Certificates</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="skills" class="portfolio-section" aria-labelledby="skills-title">
+                <div class="inner">
+                    <p class="section-kicker">Current capabilities</p>
+                    <h2 id="skills-title">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <article>
+                            <span class="skill-level">Guided practice · foundational knowledge</span>
+                            <h3>Automation &amp; PLCs</h3>
+                            <p>Mitsubishi GX Works2 and FX-TRN exposure, foundational ladder logic, PLC inputs/outputs,
+                                and sensor-triggered actions.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">TESDA practical training</span>
+                            <h3>Electrical Controls &amp; Troubleshooting</h3>
+                            <p>FESTO FluidSIM schematic interpretation, circuit wiring, and basic troubleshooting of
+                                power, PLC indicators, wiring, sensors, and actuators.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Training &amp; project exposure</span>
+                            <h3>Mechatronics &amp; Electrical Integration</h3>
+                            <p>Motors, sensors, actuators, indicator lights, NO/NC contacts, Arduino/ESP32 project
+                                exposure. Microcontroller code was mostly AI-assisted.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Practical experience</span>
+                            <h3>Mechanical Design &amp; Prototyping</h3>
+                            <p>Blender freelance chassis modeling; component placement and clearance considerations; STL
+                                export and 3MF print-file preparation.</p>
+                        </article>
+                        <article>
+                            <span class="skill-level">Currently learning</span>
+                            <h3>CAD, Programming &amp; Computing</h3>
+                            <p>Developing SolidWorks skills through tutorials and practice; learning Python. Java and
+                                HTML/CSS are foundational academic skills. No expert or advanced programming proficiency
+                                claimed.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
             <section id="projects" class="tiles" aria-label="Projects">
                 <div class="projects-heading">
@@ -902,17 +991,6 @@
                 </div>
                 <div class="projects-viewport">
                     <div class="projects-track">
-                        <article data-cover="" data-previews="" data-empty-state="No RC-car design media supplied yet.">
-                            <div class="project-preview"></div>
-                            <a href="html5up-forty/landing.html?project=rc-car" class="image"
-                                aria-label="Open freelance RC car chassis design case study"></a>
-                            <header class="major">
-                                <h3><a href="html5up-forty/landing.html?project=rc-car" class="link">Freelance RC Car
-                                        Chassis Design</a></h3>
-                                <p>My contribution: Blender chassis modeling and STL/3MF print-file preparation.</p>
-                            </header>
-                        </article>
-
                         <article data-cover="sumubot-cp.png"
                             data-previews="sumubot2.png|sumubot3.png|sumubot4.png|sumubot5.png|sumubot6.png|sumubot7.png|sumubot8.png|sumubot9.png|sumubot11.png">
                             <div class="project-preview"></div>
@@ -926,6 +1004,20 @@
                                         Chassis Design</a></h3>
                                 <p>My contribution: Blender chassis design, component placement, and clearance
                                     considerations.</p>
+                            </header>
+                        </article>
+                        <article data-cover="smart-house-cp.png"
+                            data-previews="smart-house2.png|smart-house3.png|smart-house4.png|smart-house5.png|smart-house6.png|smart-house8.png|smart-house9.jfif|smart-house10.jfif|smart-house11.jfif|smart-house12.jfif|smart-house13.jfif|smart-house16.png|smart-house17.png|smart-house18.png|smart-housevid.mp4|smart-housevid2.mp4|smart-housevid3.mp4|smart-housevid4.mp4">
+                            <div class="project-preview"></div>
+                            <img class="cover-photo" src="html5up-forty/images/smart-house-cp.png" alt=""
+                                aria-hidden="true">
+                            <a href="html5up-forty/landing.html?project=smart-house" class="image"
+                                aria-label="Open 3D printed smart house project">
+                            </a>
+                            <header class="major">
+                                <h3><a href="html5up-forty/landing.html?project=smart-house" class="link">3D Printed
+                                        Smart House</a></h3>
+                                <p>Introductory group project.</p>
                             </header>
                         </article>
 
@@ -975,110 +1067,7 @@
                             </header>
                         </article>
 
-                        <article data-cover="smart-house-cp.png"
-                            data-previews="smart-house2.png|smart-house3.png|smart-house4.png|smart-house5.png|smart-house6.png|smart-house8.png|smart-house9.jfif|smart-house10.jfif|smart-house11.jfif|smart-house12.jfif|smart-house13.jfif|smart-house16.png|smart-house17.png|smart-house18.png|smart-housevid.mp4|smart-housevid2.mp4|smart-housevid3.mp4|smart-housevid4.mp4">
-                            <div class="project-preview"></div>
-                            <img class="cover-photo" src="html5up-forty/images/smart-house-cp.png" alt=""
-                                aria-hidden="true">
-                            <a href="html5up-forty/landing.html?project=smart-house" class="image"
-                                aria-label="Open 3D printed smart house project">
-                            </a>
-                            <header class="major">
-                                <h3><a href="html5up-forty/landing.html?project=smart-house" class="link">3D Printed
-                                        Smart House</a></h3>
-                                <p>Introductory group project.</p>
-                            </header>
-                        </article>
-                    </div>
-                </div>
-            </section>
 
-            <section id="training" class="portfolio-section" aria-labelledby="training-title">
-                <div class="inner">
-                    <p class="section-kicker">Practical exposure</p>
-                    <h2 id="training-title">Technical Training &amp; Practice</h2>
-                    <p class="section-lede">
-                        TESDA NC II practice and a June–July 2025 Hytec Power Inc. internship.
-                        These are guided and introductory experiences, not claims of independent industrial
-                        commissioning.
-                    </p>
-                    <div class="training-facts">
-                        <article>
-                            <span class="skill-level">TESDA Mechatronics Servicing NC II</span>
-                            <h3>FluidSIM &amp; circuit practice</h3>
-                            <p>Designed and interpreted FESTO FluidSIM schematics, then practiced translating diagrams
-                                into physical circuit connections. Progressed from instructor assistance to assembling
-                                and wiring circuits independently.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">TESDA Mechatronics Servicing NC II</span>
-                            <h3>Components &amp; basic troubleshooting</h3>
-                            <p>Worked with motors, sensors, actuators, indicator lights, and NO/NC contacts. Practiced
-                                basic checks of the power supply, PLC indicators, wiring, sensors, and actuators.
-                                Connected PLC hardware with a program already loaded; these wiring exercises did not
-                                involve independently programming the PLC.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">Technical &amp; Marketing Engineering Intern · June–July
-                                2025</span>
-                            <h3>Hytec Power Inc. · PLC training</h3>
-                            <p>Practiced Mitsubishi PLC programming in GX Works2 with instructor guidance. FX-TRN
-                                exercises covered lights, sensors, actuators, car detection, and pedestrian
-                                traffic-light scenarios.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">Technical &amp; Marketing Engineering Intern · June–July
-                                2025</span>
-                            <h3>Team exercises &amp; product research</h3>
-                            <p>Participated in team conveyor/stamping-station programming, wiring, operation, and
-                                troubleshooting attempts; completion is not claimed. Also took part in smart-home
-                                simulation wiring, product research, and promotional slogan/material contributions.</p>
-                        </article>
-                    </div>
-                    <ul class="actions">
-                        <li><a href="training.html" class="button">View Training Media &amp; Schematics</a></li>
-                        <li><a href="certificates.html" class="button">View Certificates</a></li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="skills" class="portfolio-section" aria-labelledby="skills-title">
-                <div class="inner">
-                    <p class="section-kicker">Current capabilities</p>
-                    <h2 id="skills-title">Technical Skills</h2>
-                    <div class="skills-grid">
-                        <article>
-                            <span class="skill-level">Guided practice · foundational knowledge</span>
-                            <h3>Automation &amp; PLCs</h3>
-                            <p>Mitsubishi GX Works2 and FX-TRN exposure, foundational ladder logic, PLC inputs/outputs,
-                                and sensor-triggered actions. PLC programming practice was instructor-guided.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">TESDA practical training</span>
-                            <h3>Electrical Controls &amp; Troubleshooting</h3>
-                            <p>FESTO FluidSIM schematic interpretation, circuit wiring, and basic troubleshooting of
-                                power, PLC indicators, wiring, sensors, and actuators.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">Training &amp; project exposure</span>
-                            <h3>Mechatronics &amp; Electrical Integration</h3>
-                            <p>Motors, sensors, actuators, indicator lights, NO/NC contacts, Arduino/ESP32 project
-                                exposure. Microcontroller code was heavily AI-assisted; independent
-                                programming proficiency is not claimed.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">Practical experience</span>
-                            <h3>Mechanical Design &amp; Prototyping</h3>
-                            <p>Blender freelance chassis modeling; component placement and clearance considerations; STL
-                                export and 3MF print-file preparation.</p>
-                        </article>
-                        <article>
-                            <span class="skill-level">Currently learning</span>
-                            <h3>CAD, Programming &amp; Computing</h3>
-                            <p>Developing SolidWorks skills through tutorials and practice; learning Python. Java and
-                                HTML/CSS are foundational academic skills. No expert or advanced programming proficiency
-                                claimed.</p>
-                        </article>
                     </div>
                 </div>
             </section>
@@ -1090,8 +1079,15 @@
                     <div class="training-facts">
                         <article>
                             <span class="skill-level">Bachelor’s degree</span>
+                            <h3>Saint Louis University</h3>
                             <h3>Bachelor of Mechatronics Engineering</h3>
-                            <p>Saint Louis University. Graduation date not listed.</p>
+                            <h3>2.15/4 GPA</h3>
+                        </article>
+                        <article>
+                            <span class="skill-level">Senior High School</span>
+                            <h3>University of the Cordillera</h3>
+                            <h3>GAS Strand</h3>
+                            <h3>Graduate with Honors</h3>
                         </article>
                         <article>
                             <span class="skill-level">TESDA National Certificate II</span>
@@ -1115,7 +1111,7 @@
                         <div>
                             <p>
                                 I’m a fresh Mechatronics Engineering graduate from Saint Louis University.
-                                I’m most interested in mechanical design and creating physical things, and
+                                I’m most interested in mechanical design and in creating physical things, and
                                 I’m curious about how mechanical components work with sensors, actuators,
                                 electrical controls, and automation.
                             </p>

@@ -62,6 +62,10 @@ summary:focus-visible {
     text-transform: none;
 }
 
+#banner > .inner .content p.hero-headline span {
+    display: block;
+}
+
 #banner > .inner .content p.hero-summary {
     max-width: 720px;
     margin: 0 auto;
@@ -211,6 +215,10 @@ summary:focus-visible {
 #training,
 #skills {
     border-top: 1px solid var(--portfolio-line);
+}
+
+#training .actions {
+    margin-top: 1.5rem;
 }
 
 #training h2,
