@@ -143,28 +143,87 @@ summary:focus-visible {
 
 #projects.tiles .projects-track {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    width: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
     padding: 1rem clamp(1.25rem, 5vw, 4rem);
-    gap: 1rem;
+    gap: 1.25rem;
+    align-items: stretch;
 }
 
 #projects.tiles article,
 #projects.tiles article:hover,
 #projects.tiles article.is-hovered {
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100% !important;
     height: auto;
-    min-height: 25rem;
+    min-width: 0;
+    min-height: 0;
+    max-height: none;
     flex: initial;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden;
     border: 1px solid var(--portfolio-line);
     border-radius: 2px;
     background-color: var(--portfolio-surface);
-    transform: none;
+    transform: none !important;
     box-shadow: none;
+    filter: none;
+    opacity: 1;
 }
 
 #projects.tiles article:hover {
     border-color: #657278;
+    transform: translateY(-2px) !important;
+}
+
+#projects.tiles article .project-preview {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    flex: 0 0 auto;
+    background-color: #20252a;
+}
+
+#projects.tiles article .project-preview::after {
+    background: linear-gradient(180deg, transparent 55%, rgba(8, 11, 13, .25) 100%);
+    opacity: 1;
+}
+
+#projects.tiles article .project-preview img,
+#projects.tiles article .project-preview video {
+    filter: none;
+}
+
+#projects.tiles article .cover-photo {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    opacity: 0;
+}
+
+#projects.tiles article:hover .cover-photo,
+#projects.tiles article.is-hovered .cover-photo {
+    opacity: 1;
+    transform: none;
+}
+
+#projects.tiles article .image {
+    z-index: 6;
 }
 
 #projects.tiles article .cover-photo,
@@ -173,16 +232,28 @@ summary:focus-visible {
     border-radius: 0;
 }
 
-#projects.tiles article .project-preview::after {
-    background: linear-gradient(180deg, transparent 15%, rgba(8, 11, 13, .85) 100%);
-    opacity: 1;
-}
-
 #projects.tiles article header.major {
+    position: relative;
+    inset: auto;
+    z-index: 8;
     display: block;
     width: 100%;
     max-width: 100%;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
     padding: 1.25rem;
+    margin: 0;
+    overflow: visible;
+    background: var(--portfolio-surface);
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: none;
+}
+
+#projects.tiles article.has-long-content header.major {
+    height: auto;
+    justify-content: initial;
 }
 
 #projects.tiles article header.major h3 {
@@ -193,12 +264,26 @@ summary:focus-visible {
     overflow-wrap: anywhere;
 }
 
+#projects.tiles article header.major h3::after {
+    display: none;
+}
+
 #projects.tiles article header.major p {
     width: auto;
     max-width: 100%;
     color: var(--portfolio-muted);
     font-size: .88rem;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
     overflow-wrap: anywhere;
+}
+
+#projects.tiles article header.major a {
+    position: relative;
+    z-index: 9;
+    color: var(--portfolio-text);
+    pointer-events: auto;
 }
 
 .projects-controls {
@@ -332,6 +417,16 @@ summary:focus-visible {
     #projects.tiles article:hover,
     #projects.tiles article.is-hovered {
         min-height: 22rem;
+    }
+
+    #projects.tiles .projects-track {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #projects.tiles article,
+    #projects.tiles article:hover,
+    #projects.tiles article.is-hovered {
+        min-height: 0;
     }
 }
 
